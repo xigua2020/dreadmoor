@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import DbExplorer from "@/components/DbExplorer";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { recipes } from "@/lib/data";
+import { materialHref, recipes } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "DREADMOOR Crafting Recipes – All Recipes, Ingredients & Requirements",
@@ -20,22 +20,32 @@ export default function RecipesPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Crafting", path: "/crafting/" }, { name: "Recipes", path: "/crafting/recipes/" }])} />
       <Breadcrumbs items={[{ name: "Crafting", href: "/crafting/" }, { name: "Recipes" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Crafting Recipes</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Crafting recipes database"
-          intro="Every verified crafting recipe in DREADMOOR with ingredients, quantities and requirements."
-          columns={["Item", "Ingredients", "Requirements", "Effect"]}
-          rows={recipes.map((r) => ({
-            href: `/crafting/recipes/${r.slug}/`,
-            cells: [
-              r.name,
-              r.ingredients?.map((m) => `${m.item} ×${m.qty}`).join(", ") ?? "—",
-              r.requirements ?? "—",
-              r.effect ?? "—",
-            ],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Every verified crafting recipe in DREADMOOR with ingredients, quantities and requirements.
+      </p>
+      <DbExplorer
+        rows={recipes.map((r) => ({
+          id: r.slug,
+          href: `/crafting/recipes/${r.slug}/`,
+          cells: {
+            name: r.name,
+            ingredients: r.ingredients?.length
+              ? { parts: r.ingredients.map((m) => ({ text: `${m.item} ×${m.qty}`, href: materialHref(m.item) ?? undefined })) }
+              : "—",
+            requirements: r.requirements ?? "—",
+            effect: r.effect ?? "—",
+          },
+          filters: { requirements: r.requirements ? [r.requirements] : [] },
+        }))}
+        columns={[
+          { key: "name", label: "Item", sortable: true },
+          { key: "ingredients", label: "Ingredients" },
+          { key: "requirements", label: "Requirements", sortable: true },
+          { key: "effect", label: "Effect" },
+        ]}
+        filters={[{ key: "requirements", label: "Requirement" }]}
+        searchPlaceholder="Search recipes…"
+      />
     </div>
   );
 }

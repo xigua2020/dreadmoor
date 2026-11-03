@@ -62,11 +62,11 @@ export const fishHref = (name?: string) => {
 };
 export const baitHref = (name?: string) => {
   const e = matchByName(bait, name);
-  return e ? `/fishing/bait/#${e.slug}` : null;
+  return e ? `/fishing/bait/${e.slug}/` : null;
 };
 export const materialHref = (name?: string) => {
   const e = matchByName(materials, name);
-  return e ? `/crafting/materials/#${e.slug}` : null;
+  return e ? `/world/resources/#${e.slug}` : null;
 };
 export const locationHref = (name?: string) => {
   const e = matchByName(locations, name);

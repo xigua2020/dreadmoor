@@ -72,12 +72,12 @@ export function getSearchIndex(): SearchItem[] {
     });
   }
   fish.forEach((e) => items.push({ title: e.name, href: `/fishing/fish-list/${e.slug}/`, description: e.description ?? "Fish entry", section: "Fish" }));
-  bait.forEach((e) => items.push({ title: e.name, href: "/fishing/bait/", description: e.description ?? "Bait entry", section: "Fishing" }));
+  bait.forEach((e) => items.push({ title: e.name, href: `/fishing/bait/${e.slug}/`, description: e.description ?? "Bait entry", section: "Fishing" }));
   fishingSpots.forEach((e) => items.push({ title: e.name, href: "/fishing/fishing-spots/", description: e.notes ?? "Fishing spot", section: "Fishing" }));
   boatUpgrades.forEach((e) => items.push({ title: e.name, href: `/boat/upgrades/${e.slug}/`, description: e.effect ?? "Boat upgrade", section: "Boat" }));
   recipes.forEach((e) => items.push({ title: e.name, href: `/crafting/recipes/${e.slug}/`, description: e.effect ?? "Crafting recipe", section: "Crafting" }));
   blueprints.forEach((e) => items.push({ title: e.name, href: "/crafting/blueprints/", description: e.description ?? "Blueprint", section: "Crafting" }));
-  materials.forEach((e) => items.push({ title: e.name, href: "/crafting/materials/", description: e.description ?? "Material", section: "Crafting" }));
+  materials.forEach((e) => items.push({ title: e.name, href: `/world/resources/#${e.slug}`, description: e.description ?? "Material", section: "World" }));
   creatures.forEach((e) => items.push({ title: e.name, href: `/world/creatures/${e.slug}/`, description: e.description ?? "Creature", section: "Creatures" }));
   locations.forEach((e) => items.push({ title: e.name, href: `/world/locations/${e.slug}/`, description: e.description ?? "Location", section: "World" }));
   quests.forEach((e) => items.push({ title: e.name, href: `/quests/${e.slug}/`, description: e.walkthrough?.slice(0, 120) ?? "Quest", section: "Quests" }));

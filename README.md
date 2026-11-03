@@ -24,6 +24,7 @@ npm run typecheck  # TypeScript check
 Content only covers the **released game** (Early Access or later). No demo/playtest data, no invented values.
 
 - **Databases** — `src/data/*.json` (fish, bait, fishing-spots, boat-upgrades, recipes, blueprints, materials, creatures, locations, quests). Types live in `src/lib/types.ts`.
+  - All listing pages share the `DbExplorer` template (text search, per-column filters, sorting) at: `/fishing/fish-list/`, `/fishing/bait/`, `/fishing/fishing-spots/`, `/boat/upgrades/`, `/crafting/recipes/`, `/crafting/blueprints/`, `/world/resources/`, `/world/creatures/`, `/world/locations/`. Detail pages exist for fish, bait, boat upgrades, recipes, creatures, locations and quests.
   - Listing and detail pages are **data-driven**: a database with zero entries returns 404 and is excluded from the sitemap and navigation automatically. Adding verified JSON entries is all that is needed to publish them.
 - **Guide articles** — Markdown files in `content/guides/` with frontmatter:
   ```md

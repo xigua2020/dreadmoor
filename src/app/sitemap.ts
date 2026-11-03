@@ -27,13 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   if (fish.length) urls.push({ url: `${site.url}/fishing/fish-list/`, changeFrequency: "weekly", priority: 0.7 });
   for (const f of fish) urls.push({ url: `${site.url}/fishing/fish-list/${f.slug}/`, changeFrequency: "monthly", priority: 0.6 });
   if (bait.length) urls.push({ url: `${site.url}/fishing/bait/`, changeFrequency: "weekly", priority: 0.7 });
+  for (const b of bait) urls.push({ url: `${site.url}/fishing/bait/${b.slug}/`, changeFrequency: "monthly", priority: 0.6 });
   if (fishingSpots.length) urls.push({ url: `${site.url}/fishing/fishing-spots/`, changeFrequency: "weekly", priority: 0.7 });
   if (boatUpgrades.length) urls.push({ url: `${site.url}/boat/upgrades/`, changeFrequency: "weekly", priority: 0.7 });
   for (const u of boatUpgrades) urls.push({ url: `${site.url}/boat/upgrades/${u.slug}/`, changeFrequency: "monthly", priority: 0.6 });
   if (recipes.length) urls.push({ url: `${site.url}/crafting/recipes/`, changeFrequency: "weekly", priority: 0.7 });
   for (const r of recipes) urls.push({ url: `${site.url}/crafting/recipes/${r.slug}/`, changeFrequency: "monthly", priority: 0.6 });
   if (blueprints.length) urls.push({ url: `${site.url}/crafting/blueprints/`, changeFrequency: "weekly", priority: 0.7 });
-  if (materials.length) urls.push({ url: `${site.url}/crafting/materials/`, changeFrequency: "weekly", priority: 0.7 });
+  if (materials.length) urls.push({ url: `${site.url}/world/resources/`, changeFrequency: "weekly", priority: 0.7 });
   if (locations.length) {
     urls.push({ url: `${site.url}/world/locations/`, changeFrequency: "weekly", priority: 0.7 });
     urls.push({ url: `${site.url}/world/map/`, changeFrequency: "monthly", priority: 0.6 });

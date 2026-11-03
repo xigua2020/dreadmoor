@@ -49,7 +49,7 @@ export default async function BoatUpgradeDetailPage({ params }: { params: Promis
           { label: "Requirements", value: entry.requirements },
         ]}
         related={[
-          { label: "Materials & Salvage", href: "/crafting/materials/" },
+          { label: "Materials & Salvage", href: "/world/resources/" },
           { label: "Boat Guide", href: "/boat/" },
         ]}
       />

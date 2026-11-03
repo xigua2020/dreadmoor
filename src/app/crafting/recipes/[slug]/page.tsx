@@ -46,7 +46,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
           { label: "Effect / Usage", value: entry.effect },
         ]}
         related={[
-          { label: "Materials & Locations", href: "/crafting/materials/" },
+          { label: "Materials & Locations", href: "/world/resources/" },
           { label: "Blueprints", href: "/crafting/blueprints/" },
         ]}
       />

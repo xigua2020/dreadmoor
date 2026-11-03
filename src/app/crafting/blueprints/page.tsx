@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import DbExplorer from "@/components/DbExplorer";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { blueprints } from "@/lib/data";
+import { blueprints, locationHref, recipeHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "DREADMOOR Blueprints – All Blueprint Locations & Unlocks",
@@ -20,16 +20,27 @@ export default function BlueprintsPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Crafting", path: "/crafting/" }, { name: "Blueprints", path: "/crafting/blueprints/" }])} />
       <Breadcrumbs items={[{ name: "Crafting", href: "/crafting/" }, { name: "Blueprints" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Blueprints</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Blueprints database"
-          intro="Verified blueprint locations in DREADMOOR and what each blueprint unlocks."
-          columns={["Blueprint", "Unlocks", "Location"]}
-          rows={blueprints.map((b) => ({
-            cells: [b.name, b.unlocks ?? "—", b.location ?? "—"],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Verified blueprint locations in DREADMOOR and what each blueprint unlocks.
+      </p>
+      <DbExplorer
+        rows={blueprints.map((b) => ({
+          id: b.slug,
+          cells: {
+            name: b.name,
+            unlocks: b.unlocks ? { parts: [{ text: b.unlocks, href: recipeHref(b.unlocks) ?? undefined }] } : "—",
+            location: b.location ? { parts: [{ text: b.location, href: locationHref(b.location) ?? undefined }] } : "—",
+          },
+          filters: { location: b.location ? [b.location] : [] },
+        }))}
+        columns={[
+          { key: "name", label: "Blueprint", sortable: true },
+          { key: "unlocks", label: "Unlocks", sortable: true },
+          { key: "location", label: "Location", sortable: true },
+        ]}
+        filters={[{ key: "location", label: "Location" }]}
+        searchPlaceholder="Search blueprints…"
+      />
     </div>
   );
 }

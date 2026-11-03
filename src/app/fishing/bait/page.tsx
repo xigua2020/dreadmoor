@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import DbExplorer from "@/components/DbExplorer";
 import JsonLd from "@/components/JsonLd";
-import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { bait, fishHref, materialHref } from "@/lib/data";
 
@@ -21,36 +20,34 @@ export default function BaitPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Fishing", path: "/fishing/" }, { name: "Bait", path: "/fishing/bait/" }])} />
       <Breadcrumbs items={[{ name: "Fishing", href: "/fishing/" }, { name: "Bait & Lures" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Bait &amp; Lures</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Bait database"
-          intro="Every bait verified in DREADMOOR: what it attracts, what it is made from, and how to get it."
-          columns={["Bait", "Used For", "Materials", "How to Get"]}
-          rows={bait.map((b) => ({
-            id: b.slug,
-            cells: [
-              b.name,
-              b.usedFor?.length
-                ? b.usedFor.map((name, i) => (
-                    <span key={name}>
-                      {i > 0 && ", "}
-                      <MaybeLink href={fishHref(name)}>{name}</MaybeLink>
-                    </span>
-                  ))
-                : "—",
-              b.materials?.length
-                ? b.materials.map((m, i) => (
-                    <span key={m.item}>
-                      {i > 0 && ", "}
-                      <MaybeLink href={materialHref(m.item)}>{m.item} ×{m.qty}</MaybeLink>
-                    </span>
-                  ))
-                : "—",
-              b.howToGet ?? "—",
-            ],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Every bait verified in DREADMOOR: what it attracts, what it is made from, and how to get it.
+      </p>
+      <DbExplorer
+        rows={bait.map((b) => ({
+          id: b.slug,
+          href: `/fishing/bait/${b.slug}/`,
+          cells: {
+            name: b.name,
+            usedFor: b.usedFor?.length
+              ? { parts: b.usedFor.map((name) => ({ text: name, href: fishHref(name) ?? undefined })) }
+              : "—",
+            materials: b.materials?.length
+              ? { parts: b.materials.map((m) => ({ text: `${m.item} ×${m.qty}`, href: materialHref(m.item) ?? undefined })) }
+              : "—",
+            howToGet: b.howToGet ?? "—",
+          },
+          filters: { usedFor: b.usedFor ?? [] },
+        }))}
+        columns={[
+          { key: "name", label: "Bait", sortable: true },
+          { key: "usedFor", label: "Used For", sortable: true },
+          { key: "materials", label: "Materials" },
+          { key: "howToGet", label: "How to Get" },
+        ]}
+        filters={[{ key: "usedFor", label: "Fish" }]}
+        searchPlaceholder="Search bait…"
+      />
     </div>
   );
 }

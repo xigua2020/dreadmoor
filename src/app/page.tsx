@@ -85,7 +85,7 @@ export default function HomePage() {
     { title: "Boat Upgrades", icon: "boat", count: boatUpgrades.length, href: boatUpgrades.length ? "/boat/upgrades/" : "/boat/", description: "Engine, hull, propeller, spotlight and more." },
     { title: "Crafting Recipes", icon: "recipe", count: recipes.length, href: recipes.length ? "/crafting/recipes/" : "/crafting/", description: "Ingredients, quantities and crafting requirements." },
     { title: "Blueprints", icon: "blueprint", count: blueprints.length, href: blueprints.length ? "/crafting/blueprints/" : "/crafting/", description: "Where to find blueprints and what they unlock." },
-    { title: "Materials", icon: "material", count: materials.length, href: materials.length ? "/crafting/materials/" : "/crafting/", description: "Scrap metal, salvage and where to gather them." },
+    { title: "Resources", icon: "material", count: materials.length, href: materials.length ? "/world/resources/" : "/world/", description: "Scrap metal, salvage and where to gather them." },
     { title: "Creatures", icon: "creature", count: creatures.length, href: creatures.length ? "/world/creatures/" : "/world/", description: "Mutated creatures, behavior and combat notes." },
     { title: "Locations", icon: "location", count: locations.length, href: locations.length ? "/world/locations/" : "/world/", description: "Settlements, traders, caves and shipwrecks." },
     { title: "Quests", icon: "quest", count: quests.length, href: quests.length ? "/quests/" : "/quests/", description: "Objectives, prerequisites and rewards." },

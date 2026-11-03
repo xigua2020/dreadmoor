@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import DbExplorer from "@/components/DbExplorer";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { locations } from "@/lib/data";
@@ -20,17 +20,35 @@ export default function LocationsPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "World", path: "/world/" }, { name: "Locations", path: "/world/locations/" }])} />
       <Breadcrumbs items={[{ name: "World", href: "/world/" }, { name: "Locations" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Locations</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Locations database"
-          intro="Verified locations in DREADMOOR: settlements, traders, ruins and resource spots, region by region."
-          columns={["Location", "Region", "Type"]}
-          rows={locations.map((l) => ({
-            href: `/world/locations/${l.slug}/`,
-            cells: [l.name, l.region ?? "—", l.type ?? "—"],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Verified locations in DREADMOOR: settlements, traders, ruins and resource spots, region by
+        region.
+      </p>
+      <DbExplorer
+        rows={locations.map((l) => ({
+          id: l.slug,
+          href: `/world/locations/${l.slug}/`,
+          cells: {
+            name: l.name,
+            region: l.region ?? "—",
+            type: l.type ?? "—",
+          },
+          filters: {
+            region: l.region ? [l.region] : [],
+            type: l.type ? [l.type] : [],
+          },
+        }))}
+        columns={[
+          { key: "name", label: "Location", sortable: true },
+          { key: "region", label: "Region", sortable: true },
+          { key: "type", label: "Type", sortable: true },
+        ]}
+        filters={[
+          { key: "region", label: "Region" },
+          { key: "type", label: "Type" },
+        ]}
+        searchPlaceholder="Search locations…"
+      />
     </div>
   );
 }

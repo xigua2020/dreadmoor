@@ -59,8 +59,8 @@ export default function CraftingPage() {
           <p className="mt-1 text-sm text-muted">Blueprint locations and unlocks.</p>
           {blueprints.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{blueprints.length} entries</p>}
         </Link>
-        <Link href={materials.length ? "/crafting/materials/" : "/crafting/"} className="card block p-5" aria-disabled={!materials.length}>
-          <h2 className="font-display text-lg font-bold text-ink">Materials</h2>
+        <Link href={materials.length ? "/world/resources/" : "/world/"} className="card block p-5" aria-disabled={!materials.length}>
+          <h2 className="font-display text-lg font-bold text-ink">Resources</h2>
           <p className="mt-1 text-sm text-muted">Where to gather each crafting material.</p>
           {materials.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{materials.length} entries</p>}
         </Link>

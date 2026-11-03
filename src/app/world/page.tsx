@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { creatures, locations } from "@/lib/data";
+import { creatures, locations, materials } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "DREADMOOR World Guide – Map, Locations, Creatures & the Sea Blight",
@@ -47,7 +47,7 @@ export default function WorldPage() {
         </div>
       </div>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-3">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Link href={locations.length ? "/world/locations/" : "/world/"} className="card block p-5" aria-disabled={!locations.length}>
           <h2 className="font-display text-lg font-bold text-ink">Locations</h2>
           <p className="mt-1 text-sm text-muted">Settlements, traders and points of interest.</p>
@@ -57,6 +57,11 @@ export default function WorldPage() {
           <h2 className="font-display text-lg font-bold text-ink">Creatures</h2>
           <p className="mt-1 text-sm text-muted">Mutated monsters, behavior and habitats.</p>
           {creatures.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{creatures.length} entries</p>}
+        </Link>
+        <Link href={materials.length ? "/world/resources/" : "/world/"} className="card block p-5" aria-disabled={!materials.length}>
+          <h2 className="font-display text-lg font-bold text-ink">Resources</h2>
+          <p className="mt-1 text-sm text-muted">Scrap metal and material gathering locations.</p>
+          {materials.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{materials.length} entries</p>}
         </Link>
         <Link href={locations.length ? "/world/map/" : "/world/"} className="card block p-5" aria-disabled={!locations.length}>
           <h2 className="font-display text-lg font-bold text-ink">World Map</h2>

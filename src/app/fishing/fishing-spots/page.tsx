@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import DbExplorer from "@/components/DbExplorer";
 import JsonLd from "@/components/JsonLd";
-import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { fishingSpots, fishHref, locationHref } from "@/lib/data";
 
@@ -21,27 +20,36 @@ export default function FishingSpotsPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Fishing", path: "/fishing/" }, { name: "Fishing Spots", path: "/fishing/fishing-spots/" }])} />
       <Breadcrumbs items={[{ name: "Fishing", href: "/fishing/" }, { name: "Fishing Spots" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Fishing Spots</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Fishing spots database"
-          intro="Verified fishing spots in DREADMOOR, the regions they belong to, and the species you can catch there."
-          columns={["Spot", "Region", "Fish"]}
-          rows={fishingSpots.map((s) => ({
-            cells: [
-              <MaybeLink key="spot" href={locationHref(s.name)}>{s.name}</MaybeLink>,
-              s.region ?? "—",
-              s.fish?.length
-                ? s.fish.map((name, i) => (
-                    <span key={name}>
-                      {i > 0 && ", "}
-                      <MaybeLink href={fishHref(name)}>{name}</MaybeLink>
-                    </span>
-                  ))
-                : "—",
-            ],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Verified fishing spots in DREADMOOR, the regions they belong to, and the species you can
+        catch there.
+      </p>
+      <DbExplorer
+        rows={fishingSpots.map((s) => ({
+          id: s.slug,
+          cells: {
+            name: { parts: [{ text: s.name, href: locationHref(s.name) ?? undefined }] },
+            region: s.region ?? "—",
+            fish: s.fish?.length
+              ? { parts: s.fish.map((name) => ({ text: name, href: fishHref(name) ?? undefined })) }
+              : "—",
+          },
+          filters: {
+            region: s.region ? [s.region] : [],
+            fish: s.fish ?? [],
+          },
+        }))}
+        columns={[
+          { key: "name", label: "Spot", sortable: true },
+          { key: "region", label: "Region", sortable: true },
+          { key: "fish", label: "Fish" },
+        ]}
+        filters={[
+          { key: "region", label: "Region" },
+          { key: "fish", label: "Fish" },
+        ]}
+        searchPlaceholder="Search fishing spots…"
+      />
     </div>
   );
 }
