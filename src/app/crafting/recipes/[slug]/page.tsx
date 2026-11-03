@@ -4,7 +4,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, recipes } from "@/lib/data";
+import { bySlug, materialHref, recipes } from "@/lib/data";
+import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
   return recipes.map((r) => ({ slug: r.slug }));
@@ -35,7 +36,12 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
         name={entry.name}
         image={entry.image}
         facts={[
-          { label: "Ingredients", value: entry.ingredients?.map((m) => `${m.item} ×${m.qty}`).join(", ") },
+          { label: "Ingredients", value: entry.ingredients?.map((m, i) => (
+              <span key={m.item}>
+                {i > 0 && ", "}
+                <MaybeLink href={materialHref(m.item)}>{m.item} ×{m.qty}</MaybeLink>
+              </span>
+            )) },
           { label: "Requirements", value: entry.requirements },
           { label: "Effect / Usage", value: entry.effect },
         ]}

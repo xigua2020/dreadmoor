@@ -18,6 +18,7 @@ export interface Bait {
   name: string;
   description?: string;
   usedFor?: string[];
+  materials?: MaterialRef[];
   howToGet?: string;
   image?: string;
 }
@@ -92,7 +93,10 @@ export interface LocationEntry {
   type?: string;
   description?: string;
   npcs?: string[];
+  traders?: string[];
+  fish?: string[];
   resources?: string[];
+  quests?: string[];
   image?: string;
 }
 

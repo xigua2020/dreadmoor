@@ -10,7 +10,7 @@ export default function DbListing({
   title: string;
   intro: string;
   columns: string[];
-  rows: { cells: (string | React.ReactNode)[]; href?: string }[];
+  rows: { cells: (string | React.ReactNode)[]; href?: string; id?: string }[];
 }) {
   return (
     <>
@@ -22,7 +22,7 @@ export default function DbListing({
           </thead>
           <tbody>
             {rows.map((row, i) => (
-              <tr key={i}>
+              <tr key={i} id={row.id}>
                 {row.cells.map((cell, j) => (
                   <td key={j}>
                     {j === 0 && row.href ? (

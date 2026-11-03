@@ -32,11 +32,18 @@ Content only covers the **released game** (Early Access or later). No demo/playt
   description: "…"
   category: "Beginner"
   updated: "2026-11-10"
-  image: "/images/…"
+  version: "EA 1.0"              # game version the guide was verified against
+  image: "/images/…"             # cover image
+  takeaways: ["Quick point 1", "Quick point 2"]
+  faq: [{ q: "Real question?", a: "Verified answer." }]
+  sources: [{ label: "research/ note or URL", url: "https://…" }]
+  related: ["other-guide-slug"]
   ---
-  Article body in Markdown…
+
+  ## Headings become the automatic table of contents.
   ```
-  Files appear automatically at `/guides/<filename>/`, in listings, search and sitemap.
+  The article template renders cover, key takeaways, auto TOC (from `##`/`###`), body, FAQ (+ FAQPage JSON-LD when present), sources, related guides, prev/next navigation and last-updated/version line. Files appear automatically at `/guides/<filename>/`, in listings, search and sitemap.
+- **Cross-database links** — entries referencing each other by exact name (e.g. a fish's `bait`, a recipe's `ingredients`, a location's `fish`) are automatically linked to the matching entry pages.
 - **Site config** — `src/config/site.ts` (name, URLs, featured video ID, nav).
 
 ## SEO

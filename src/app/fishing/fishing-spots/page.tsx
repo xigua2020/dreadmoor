@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DbListing from "@/components/DbListing";
 import JsonLd from "@/components/JsonLd";
+import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { fishingSpots } from "@/lib/data";
+import { fishingSpots, fishHref, locationHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "DREADMOOR Fishing Spots – Rare Fish Locations by Region",
@@ -26,7 +27,18 @@ export default function FishingSpotsPage() {
           intro="Verified fishing spots in DREADMOOR, the regions they belong to, and the species you can catch there."
           columns={["Spot", "Region", "Fish"]}
           rows={fishingSpots.map((s) => ({
-            cells: [s.name, s.region ?? "—", s.fish?.join(", ") ?? "—"],
+            cells: [
+              <MaybeLink key="spot" href={locationHref(s.name)}>{s.name}</MaybeLink>,
+              s.region ?? "—",
+              s.fish?.length
+                ? s.fish.map((name, i) => (
+                    <span key={name}>
+                      {i > 0 && ", "}
+                      <MaybeLink href={fishHref(name)}>{name}</MaybeLink>
+                    </span>
+                  ))
+                : "—",
+            ],
           }))}
         />
       </div>

@@ -4,7 +4,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bait, bySlug, fish } from "@/lib/data";
+import { bait, baitHref, bySlug, fish, locationHref } from "@/lib/data";
+import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
   return fish.map((f) => ({ slug: f.slug }));
@@ -38,8 +39,8 @@ export default async function FishDetailPage({ params }: { params: Promise<{ slu
         description={entry.description}
         facts={[
           { label: "Type", value: entry.type },
-          { label: "Location", value: entry.location },
-          { label: "Bait", value: entry.bait },
+          { label: "Location", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
+          { label: "Bait", value: entry.bait ? <MaybeLink href={baitHref(entry.bait)}>{entry.bait}</MaybeLink> : undefined },
           { label: "Rarity", value: entry.rarity },
           { label: "Sell Value", value: entry.sellValue },
         ]}

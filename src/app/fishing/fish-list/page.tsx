@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import DbListing from "@/components/DbListing";
+import FishExplorer from "@/components/FishExplorer";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { fish } from "@/lib/data";
@@ -20,17 +20,11 @@ export default function FishListPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Fishing", path: "/fishing/" }, { name: "Fish List", path: "/fishing/fish-list/" }])} />
       <Breadcrumbs items={[{ name: "Fishing", href: "/fishing/" }, { name: "Fish List" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Fish List</h1>
-      <div className="mt-6">
-        <DbListing
-          title="Fish database"
-          intro="Every fish species verified in DREADMOOR, including mutations, with where to catch them, which bait to use, and what they sell for."
-          columns={["Name", "Type", "Location", "Bait", "Rarity", "Sell Value"]}
-          rows={fish.map((f) => ({
-            href: `/fishing/fish-list/${f.slug}/`,
-            cells: [f.name, f.type ?? "—", f.location ?? "—", f.bait ?? "—", f.rarity ?? "—", f.sellValue ?? "—"],
-          }))}
-        />
-      </div>
+      <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
+        Every fish species verified in DREADMOOR, including mutations, with where to catch them,
+        which bait to use, and what they sell for. Entries are added as they are verified in-game.
+      </p>
+      <FishExplorer entries={fish} />
     </div>
   );
 }

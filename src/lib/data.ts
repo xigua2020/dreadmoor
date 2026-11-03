@@ -42,3 +42,49 @@ export const quests = questsData as Quest[];
 export function bySlug<T extends { slug: string }>(list: T[], slug: string): T | undefined {
   return list.find((entry) => entry.slug === slug);
 }
+
+/* ------------------------------------------------------------------ */
+/* Cross-database relation helpers.                                    */
+/* Given a display name, return the href of the matching entry if one  */
+/* exists — used to link Fish↔Bait↔Spots, Recipe↔Material↔Location,    */
+/* Upgrade↔Material, Creature↔Location and Quest↔NPC↔Location.         */
+/* ------------------------------------------------------------------ */
+
+function matchByName<T extends { slug: string; name: string }>(list: T[], name?: string): T | undefined {
+  if (!name) return undefined;
+  const needle = name.trim().toLowerCase();
+  return list.find((entry) => entry.name.toLowerCase() === needle || entry.slug === needle);
+}
+
+export const fishHref = (name?: string) => {
+  const e = matchByName(fish, name);
+  return e ? `/fishing/fish-list/${e.slug}/` : null;
+};
+export const baitHref = (name?: string) => {
+  const e = matchByName(bait, name);
+  return e ? `/fishing/bait/#${e.slug}` : null;
+};
+export const materialHref = (name?: string) => {
+  const e = matchByName(materials, name);
+  return e ? `/crafting/materials/#${e.slug}` : null;
+};
+export const locationHref = (name?: string) => {
+  const e = matchByName(locations, name);
+  return e ? `/world/locations/${e.slug}/` : null;
+};
+export const recipeHref = (name?: string) => {
+  const e = matchByName(recipes, name);
+  return e ? `/crafting/recipes/${e.slug}/` : null;
+};
+export const creatureHref = (name?: string) => {
+  const e = matchByName(creatures, name);
+  return e ? `/world/creatures/${e.slug}/` : null;
+};
+export const upgradeHref = (name?: string) => {
+  const e = matchByName(boatUpgrades, name);
+  return e ? `/boat/upgrades/${e.slug}/` : null;
+};
+export const questHref = (name?: string) => {
+  const e = matchByName(quests, name);
+  return e ? `/quests/${e.slug}/` : null;
+};

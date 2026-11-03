@@ -5,7 +5,7 @@
  */
 export const site = {
   name: "DREADMOOR Wiki",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dread-moor.wiki",
   defaultTitle: "DREADMOOR Wiki & Guide – Fishing, Crafting & Boat Upgrades",
   defaultDescription:
     "Explore DREADMOOR Wiki and guides for fishing, fish locations, boat upgrades, crafting recipes, quests, maps, creatures, and survival in the Submerged Lands.",

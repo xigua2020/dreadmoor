@@ -4,7 +4,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, creatures } from "@/lib/data";
+import { bySlug, creatures, locationHref } from "@/lib/data";
+import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
   return creatures.map((c) => ({ slug: c.slug }));
@@ -37,7 +38,7 @@ export default async function CreatureDetailPage({ params }: { params: Promise<{
         description={entry.description}
         facts={[
           { label: "Type", value: entry.type },
-          { label: "Location", value: entry.location },
+          { label: "Location", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
           { label: "Behavior", value: entry.behavior },
           { label: "Weakness", value: entry.weakness },
         ]}

@@ -4,7 +4,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { boatUpgrades, bySlug } from "@/lib/data";
+import { boatUpgrades, bySlug, materialHref } from "@/lib/data";
+import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
   return boatUpgrades.map((u) => ({ slug: u.slug }));
@@ -37,7 +38,12 @@ export default async function BoatUpgradeDetailPage({ params }: { params: Promis
         facts={[
           { label: "Component", value: entry.component },
           { label: "Level", value: entry.level },
-          { label: "Materials", value: entry.materials?.map((m) => `${m.item} ×${m.qty}`).join(", ") },
+          { label: "Materials", value: entry.materials?.map((m, i) => (
+              <span key={m.item}>
+                {i > 0 && ", "}
+                <MaybeLink href={materialHref(m.item)}>{m.item} ×{m.qty}</MaybeLink>
+              </span>
+            )) },
           { label: "Cost", value: entry.cost },
           { label: "Effect", value: entry.effect },
           { label: "Requirements", value: entry.requirements },

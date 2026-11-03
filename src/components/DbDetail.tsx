@@ -12,7 +12,7 @@ export default function DbDetail({
   name: string;
   image?: string;
   description?: string;
-  facts: { label: string; value?: string }[];
+  facts: { label: string; value?: React.ReactNode }[];
   related?: { label: string; href: string }[];
 }) {
   const visibleFacts = facts.filter((f) => f.value);

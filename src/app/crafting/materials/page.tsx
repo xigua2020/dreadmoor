@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DbListing from "@/components/DbListing";
 import JsonLd from "@/components/JsonLd";
+import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { materials } from "@/lib/data";
+import { locationHref, materials, recipeHref, upgradeHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
   title: "DREADMOOR Materials – Scrap Metal & Crafting Material Locations",
@@ -26,7 +27,26 @@ export default function MaterialsPage() {
           intro="Verified crafting materials in DREADMOOR, where to gather them, and what they are used in."
           columns={["Material", "Locations", "Used In"]}
           rows={materials.map((m) => ({
-            cells: [m.name, m.locations?.join(", ") ?? "—", m.usedIn?.join(", ") ?? "—"],
+            id: m.slug,
+            cells: [
+              m.name,
+              m.locations?.length
+                ? m.locations.map((name, i) => (
+                    <span key={name}>
+                      {i > 0 && ", "}
+                      <MaybeLink href={locationHref(name)}>{name}</MaybeLink>
+                    </span>
+                  ))
+                : "—",
+              m.usedIn?.length
+                ? m.usedIn.map((name, i) => (
+                    <span key={name}>
+                      {i > 0 && ", "}
+                      <MaybeLink href={recipeHref(name) ?? upgradeHref(name)}>{name}</MaybeLink>
+                    </span>
+                  ))
+                : "—",
+            ],
           }))}
         />
       </div>

@@ -6,6 +6,7 @@ import SearchBox from "@/components/SearchBox";
 import VideoEmbed from "@/components/VideoEmbed";
 import JsonLd from "@/components/JsonLd";
 import AdSlot from "@/components/AdSlot";
+import DbIcon from "@/components/DbIcon";
 import { site } from "@/config/site";
 import { getSearchIndex } from "@/lib/search-index";
 import { getGuides } from "@/lib/guides";
@@ -78,16 +79,16 @@ const SYSTEMS = [
 export default function HomePage() {
   const guides = getGuides();
   const databases = [
-    { title: "Fish Database", count: fish.length, href: fish.length ? "/fishing/fish-list/" : "/fishing/", description: "Species, mutations, locations, bait and sell values." },
-    { title: "Bait", count: bait.length, href: bait.length ? "/fishing/bait/" : "/fishing/", description: "Bait and lures, and which fish they attract." },
-    { title: "Fishing Spots", count: fishingSpots.length, href: fishingSpots.length ? "/fishing/fishing-spots/" : "/fishing/", description: "Where to find each species across the regions." },
-    { title: "Boat Upgrades", count: boatUpgrades.length, href: boatUpgrades.length ? "/boat/upgrades/" : "/boat/", description: "Engine, hull, propeller, spotlight and more." },
-    { title: "Crafting Recipes", count: recipes.length, href: recipes.length ? "/crafting/recipes/" : "/crafting/", description: "Ingredients, quantities and crafting requirements." },
-    { title: "Blueprints", count: blueprints.length, href: blueprints.length ? "/crafting/blueprints/" : "/crafting/", description: "Where to find blueprints and what they unlock." },
-    { title: "Materials", count: materials.length, href: materials.length ? "/crafting/materials/" : "/crafting/", description: "Scrap metal, salvage and where to gather them." },
-    { title: "Creatures", count: creatures.length, href: creatures.length ? "/world/creatures/" : "/world/", description: "Mutated creatures, behavior and combat notes." },
-    { title: "Locations", count: locations.length, href: locations.length ? "/world/locations/" : "/world/", description: "Settlements, traders, caves and shipwrecks." },
-    { title: "Quests", count: quests.length, href: quests.length ? "/quests/" : "/quests/", description: "Objectives, prerequisites and rewards." },
+    { title: "Fish Database", icon: "fish", count: fish.length, href: fish.length ? "/fishing/fish-list/" : "/fishing/", description: "Species, mutations, locations, bait and sell values." },
+    { title: "Bait", icon: "bait", count: bait.length, href: bait.length ? "/fishing/bait/" : "/fishing/", description: "Bait and lures, and which fish they attract." },
+    { title: "Fishing Spots", icon: "map", count: fishingSpots.length, href: fishingSpots.length ? "/fishing/fishing-spots/" : "/fishing/", description: "Where to find each species across the regions." },
+    { title: "Boat Upgrades", icon: "boat", count: boatUpgrades.length, href: boatUpgrades.length ? "/boat/upgrades/" : "/boat/", description: "Engine, hull, propeller, spotlight and more." },
+    { title: "Crafting Recipes", icon: "recipe", count: recipes.length, href: recipes.length ? "/crafting/recipes/" : "/crafting/", description: "Ingredients, quantities and crafting requirements." },
+    { title: "Blueprints", icon: "blueprint", count: blueprints.length, href: blueprints.length ? "/crafting/blueprints/" : "/crafting/", description: "Where to find blueprints and what they unlock." },
+    { title: "Materials", icon: "material", count: materials.length, href: materials.length ? "/crafting/materials/" : "/crafting/", description: "Scrap metal, salvage and where to gather them." },
+    { title: "Creatures", icon: "creature", count: creatures.length, href: creatures.length ? "/world/creatures/" : "/world/", description: "Mutated creatures, behavior and combat notes." },
+    { title: "Locations", icon: "location", count: locations.length, href: locations.length ? "/world/locations/" : "/world/", description: "Settlements, traders, caves and shipwrecks." },
+    { title: "Quests", icon: "quest", count: quests.length, href: quests.length ? "/quests/" : "/quests/", description: "Objectives, prerequisites and rewards." },
   ];
   const hasUpdates = guides.length > 0;
 
@@ -213,6 +214,9 @@ export default function HomePage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {databases.map((db) => (
             <Link key={db.title} href={db.href} className="card block p-4">
+              <span className="mb-2 inline-flex rounded-lg bg-teal/15 p-2 text-teal-light">
+                <DbIcon name={db.icon} />
+              </span>
               <h3 className="font-semibold text-ink">{db.title}</h3>
               <p className="mt-1 text-xs leading-5 text-muted">{db.description}</p>
               {db.count > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{db.count} entries</p>}

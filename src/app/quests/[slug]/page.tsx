@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, quests } from "@/lib/data";
+import { bySlug, locationHref, quests } from "@/lib/data";
+import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
   return quests.map((q) => ({ slug: q.slug }));
@@ -50,13 +51,13 @@ export default async function QuestDetailPage({ params }: { params: Promise<{ sl
         <aside className="card h-fit p-5">
           <p className="eyebrow mb-3">Quest Info</p>
           <dl className="space-y-2.5 text-sm">
-            {[
+            {([
               ["Type", entry.type],
               ["Quest Giver", entry.giver],
-              ["Location", entry.location],
+              ["Location", entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined],
               ["Prerequisites", entry.prerequisites?.join(", ")],
               ["Rewards", entry.rewards?.join(", ")],
-            ].filter(([, v]) => v).map(([label, value]) => (
+            ] as [string, React.ReactNode][]).filter(([, v]) => v).map(([label, value]) => (
               <div key={label} className="flex justify-between gap-3 border-b border-teal/10 pb-2">
                 <dt className="text-muted">{label}</dt>
                 <dd className="text-right font-medium text-ink">{value}</dd>

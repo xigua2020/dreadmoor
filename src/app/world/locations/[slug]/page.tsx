@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
+import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, locations } from "@/lib/data";
+import { bySlug, fishHref, locations, materialHref, questHref } from "@/lib/data";
 
 export function generateStaticParams() {
   return locations.map((l) => ({ slug: l.slug }));
@@ -16,10 +17,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!entry) return {};
   return buildMetadata({
     title: `${entry.name} – DREADMOOR Location`,
-    description: entry.description ?? `${entry.name} in DREADMOOR: region, NPCs and resources.`,
+    description: entry.description ?? `${entry.name} in DREADMOOR: region, NPCs, fish and resources.`,
     path: `/world/locations/${entry.slug}/`,
     image: entry.image,
   });
+}
+
+function linkedList(names: string[] | undefined, resolve: (n: string) => string | null) {
+  if (!names?.length) return undefined;
+  return names.map((name, i) => (
+    <span key={name}>
+      {i > 0 && ", "}
+      <MaybeLink href={resolve(name)}>{name}</MaybeLink>
+    </span>
+  ));
 }
 
 export default async function LocationDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -39,11 +50,15 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
           { label: "Region", value: entry.region },
           { label: "Type", value: entry.type },
           { label: "NPCs", value: entry.npcs?.join(", ") },
-          { label: "Resources", value: entry.resources?.join(", ") },
+          { label: "Traders", value: entry.traders?.join(", ") },
+          { label: "Fish", value: linkedList(entry.fish, fishHref) },
+          { label: "Resources", value: linkedList(entry.resources, materialHref) },
+          { label: "Quests", value: linkedList(entry.quests, questHref) },
         ]}
         related={[
           { label: "World Map", href: "/world/map/" },
           { label: "Creatures", href: "/world/creatures/" },
+          { label: "Fishing Spots", href: "/fishing/fishing-spots/" },
         ]}
       />
     </div>
