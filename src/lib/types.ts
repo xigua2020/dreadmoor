@@ -4,6 +4,8 @@ export interface Fish {
   slug: string;
   name: string;
   type?: string;
+  level?: number;
+  mutant?: boolean;
   location?: string;
   bait?: string;
   rarity?: string;
@@ -20,6 +22,8 @@ export interface Bait {
   usedFor?: string[];
   materials?: MaterialRef[];
   howToGet?: string;
+  rarity?: string;
+  value?: string;
   image?: string;
 }
 
@@ -41,7 +45,9 @@ export interface BoatUpgrade {
   slug: string;
   name: string;
   component?: string;
+  tier?: string;
   level?: string;
+  research?: string;
   materials?: MaterialRef[];
   cost?: string;
   effect?: string;
@@ -52,6 +58,7 @@ export interface BoatUpgrade {
 export interface Recipe {
   slug: string;
   name: string;
+  station?: string;
   ingredients?: MaterialRef[];
   requirements?: string;
   effect?: string;

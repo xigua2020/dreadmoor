@@ -36,6 +36,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
         name={entry.name}
         image={entry.image}
         facts={[
+          { label: "Station", value: entry.station },
           { label: "Ingredients", value: entry.ingredients?.map((m, i) => (
               <span key={m.item}>
                 {i > 0 && ", "}

@@ -29,21 +29,23 @@ export default function RecipesPage() {
           href: `/crafting/recipes/${r.slug}/`,
           cells: {
             name: r.name,
+            station: r.station ?? "—",
             ingredients: r.ingredients?.length
               ? { parts: r.ingredients.map((m) => ({ text: `${m.item} ×${m.qty}`, href: materialHref(m.item) ?? undefined })) }
               : "—",
             requirements: r.requirements ?? "—",
             effect: r.effect ?? "—",
           },
-          filters: { requirements: r.requirements ? [r.requirements] : [] },
+          filters: { station: r.station ? [r.station] : [] },
         }))}
         columns={[
           { key: "name", label: "Item", sortable: true },
+          { key: "station", label: "Station", sortable: true },
           { key: "ingredients", label: "Ingredients" },
-          { key: "requirements", label: "Requirements", sortable: true },
+          { key: "requirements", label: "Requirements" },
           { key: "effect", label: "Effect" },
         ]}
-        filters={[{ key: "requirements", label: "Requirement" }]}
+        filters={[{ key: "station", label: "Station" }]}
         searchPlaceholder="Search recipes…"
       />
     </div>

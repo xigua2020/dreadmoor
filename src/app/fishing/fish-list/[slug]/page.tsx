@@ -38,10 +38,16 @@ export default async function FishDetailPage({ params }: { params: Promise<{ slu
         image={entry.image}
         description={entry.description}
         facts={[
-          { label: "Type", value: entry.type },
-          { label: "Location", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
-          { label: "Bait", value: entry.bait ? <MaybeLink href={baitHref(entry.bait)}>{entry.bait}</MaybeLink> : undefined },
-          { label: "Rarity", value: entry.rarity },
+          { label: "Temperament", value: entry.type },
+          { label: "Level", value: entry.level !== undefined ? `Lv ${entry.level}` : undefined },
+          { label: "Mutation", value: entry.mutant === undefined ? undefined : entry.mutant ? "Sea Blight mutant" : "Standard" },
+          { label: "Habitat", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
+          {
+            label: "Effective Bait",
+            value: entry.bait?.split(" / ").map((name, i) => (
+              <span key={name}>{i > 0 && " / "}<MaybeLink href={baitHref(name)}>{name}</MaybeLink></span>
+            )),
+          },
           { label: "Sell Value", value: entry.sellValue },
         ]}
         related={[

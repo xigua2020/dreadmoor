@@ -37,7 +37,8 @@ export default async function BoatUpgradeDetailPage({ params }: { params: Promis
         image={entry.image}
         facts={[
           { label: "Component", value: entry.component },
-          { label: "Level", value: entry.level },
+          { label: "Tier", value: entry.tier },
+          { label: "Research", value: entry.research },
           { label: "Materials", value: entry.materials?.map((m, i) => (
               <span key={m.item}>
                 {i > 0 && ", "}

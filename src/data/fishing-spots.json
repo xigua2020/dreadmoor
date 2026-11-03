@@ -1,1 +1,12 @@
-[]
+[
+  {"slug":"trading-post-pier","name":"Trading Post Pier","region":"Trading Post","fish":["Snapper"],"notes":"The opening fishing platform behind the Dry Dock area. The five-Snapper contract is completed here with the Simple Rod and Earthworm."},
+  {"slug":"peaceful-fishing-grounds","name":"Peaceful Fishing Grounds","region":"Trading Post outskirts","fish":["Softgrazer"],"notes":"The marked peaceful spot where the three-Softgrazer contract is completed. Equip Wind-Up Tin, cast into the active zone and let the fish take the bait before pulling."},
+  {"slug":"predator-splash-zone","name":"Predator Splash Zone","region":"Outer water","fish":["Harpooner"],"notes":"Predators reveal themselves through splash zones on the surface. Cast Rainbow Fin into the disturbance and retrieve steadily; three Harpooners unlock the Carburetor purchase."},
+  {"slug":"sheltered-shallows","name":"Sheltered Shallows","region":"Trading Post approaches","fish":["Bellybulge"],"notes":"Low-level peaceful water close to the settlement. Wind-Up Tin covers the resident species."},
+  {"slug":"trading-post-channels","name":"Trading Post Channels","region":"Trading Post","fish":["Cryptmaw","Bully"],"notes":"The channels threading the settlement, home to early predators. Bully requires the narrow Pipecross / Deadly Tick bait pair."},
+  {"slug":"blighted-backwater","name":"Blighted Backwater","region":"Blight Line","fish":["Glowbug"],"notes":"Sea Blight-corrupted water where mutant fish appear. Expect only a couple of habitats per mutant species."},
+  {"slug":"drowned-ruins","name":"Drowned Ruins","region":"Submerged Lands","fish":["Gravedigger"],"notes":"Flooded buildings and rubble. Peaceful mutants such as Gravedigger are recorded here."},
+  {"slug":"wreck-fields","name":"Wreck Fields","region":"Salvage Shoals","fish":["Rammfish"],"notes":"Dense shipwreck water. Rammfish hunts here and only takes Pipecross / Deadly Tick."},
+  {"slug":"night-water","name":"Night Water","region":"Open water (night)","fish":["Harpy","Gleamer"],"notes":"Species tied to the night cycle across the open water. Bring a Spotlight if the boat has one."},
+  {"slug":"deep-channels","name":"Deep Channels","region":"Outer channels","fish":["Bloodgill","Bonescar"],"notes":"Level 10–30 predator water beyond the settlement reach. Check fuel and hull before the run."}
+]

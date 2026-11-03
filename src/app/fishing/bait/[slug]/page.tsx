@@ -37,6 +37,8 @@ export default async function BaitDetailPage({ params }: { params: Promise<{ slu
         image={entry.image}
         description={entry.description}
         facts={[
+          { label: "Rarity", value: entry.rarity },
+          { label: "Value", value: entry.value },
           {
             label: "Used For",
             value: entry.usedFor?.map((name, i) => (

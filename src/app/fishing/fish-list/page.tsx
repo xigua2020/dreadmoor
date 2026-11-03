@@ -7,9 +7,9 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { baitHref, fish, locationHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Fish List – All Fish Species, Mutations & Locations",
+  title: "DREADMOOR Fish List – All 28 Fish Species, Baits & Locations",
   description:
-    "Complete DREADMOOR fish list: every fish species and mutation with locations, bait, rarity and sell value, verified in-game.",
+    "Complete DREADMOOR fish list: all 28 species including Sea Blight mutants, with levels, habitats, bait, temperament and sell value per kilogram.",
   path: "/fishing/fish-list/",
 });
 
@@ -21,8 +21,9 @@ export default function FishListPage() {
       <Breadcrumbs items={[{ name: "Fishing", href: "/fishing/" }, { name: "Fish List" }]} />
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Fish List</h1>
       <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
-        Every fish species verified in DREADMOOR, including mutations, with where to catch them,
-        which bait to use, and what they sell for. Search, filter and sort the table below.
+        All {fish.length} fish species recorded in DREADMOOR, with level, temperament, habitat,
+        effective bait and value per kilogram. Data verified against the October 2026 demo build
+        and updated for Early Access. Search, filter and sort the ledger below.
       </p>
       <DbExplorer
         rows={fish.map((f) => ({
@@ -30,32 +31,41 @@ export default function FishListPage() {
           href: `/fishing/fish-list/${f.slug}/`,
           cells: {
             name: f.name,
+            level: f.level !== undefined ? `Lv ${f.level}` : "—",
             type: f.type ?? "—",
+            mutation: f.mutant ? "Mutant" : "Standard",
             location: f.location ? { parts: [{ text: f.location, href: locationHref(f.location) ?? undefined }] } : "—",
-            bait: f.bait ? { parts: [{ text: f.bait, href: baitHref(f.bait) ?? undefined }] } : "—",
-            rarity: f.rarity ?? "—",
+            bait: f.bait
+              ? {
+                  parts: f.bait.split(" / ").map((name) => ({
+                    text: name,
+                    href: baitHref(name) ?? undefined,
+                  })),
+                }
+              : "—",
             value: f.sellValue ?? "—",
           },
           filters: {
             type: f.type ? [f.type] : [],
-            rarity: f.rarity ? [f.rarity] : [],
-            bait: f.bait ? [f.bait] : [],
+            mutation: [f.mutant ? "Mutant" : "Standard"],
+            bait: f.bait ? f.bait.split(" / ") : [],
             location: f.location ? [f.location] : [],
           },
         }))}
         columns={[
-          { key: "name", label: "Name", sortable: true },
+          { key: "name", label: "Species", sortable: true },
+          { key: "level", label: "Level", sortable: true },
           { key: "type", label: "Type", sortable: true },
-          { key: "location", label: "Location", sortable: true },
-          { key: "bait", label: "Bait", sortable: true },
-          { key: "rarity", label: "Rarity", sortable: true },
-          { key: "value", label: "Sell Value", sortable: true },
+          { key: "mutation", label: "Mutation", sortable: true },
+          { key: "location", label: "Habitat", sortable: true },
+          { key: "bait", label: "Effective Bait" },
+          { key: "value", label: "Value", sortable: true },
         ]}
         filters={[
           { key: "type", label: "Type" },
-          { key: "rarity", label: "Rarity" },
+          { key: "mutation", label: "Mutation" },
           { key: "bait", label: "Bait" },
-          { key: "location", label: "Location" },
+          { key: "location", label: "Habitat" },
         ]}
         searchPlaceholder="Search fish…"
       />

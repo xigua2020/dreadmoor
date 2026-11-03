@@ -31,22 +31,30 @@ export default function BoatUpgradesPage() {
           cells: {
             name: u.name,
             component: u.component ?? "—",
+            tier: u.tier ?? "—",
+            research: u.research ?? "—",
             materials: u.materials?.length
               ? { parts: u.materials.map((m) => ({ text: `${m.item} ×${m.qty}`, href: materialHref(m.item) ?? undefined })) }
               : "—",
-            cost: u.cost ?? "—",
             effect: u.effect ?? "—",
           },
-          filters: { component: u.component ? [u.component] : [] },
+          filters: {
+            component: u.component ? [u.component] : [],
+            tier: u.tier ? [u.tier] : [],
+          },
         }))}
         columns={[
           { key: "name", label: "Upgrade", sortable: true },
           { key: "component", label: "Component", sortable: true },
+          { key: "tier", label: "Tier", sortable: true },
+          { key: "research", label: "Research" },
           { key: "materials", label: "Materials" },
-          { key: "cost", label: "Cost", sortable: true },
           { key: "effect", label: "Effect" },
         ]}
-        filters={[{ key: "component", label: "Component" }]}
+        filters={[
+          { key: "component", label: "Component" },
+          { key: "tier", label: "Tier" },
+        ]}
         searchPlaceholder="Search upgrades…"
       />
     </div>

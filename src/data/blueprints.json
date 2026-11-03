@@ -1,1 +1,14 @@
-[]
+[
+  {"slug":"weak-hull-protection","name":"Weak Hull Protection","unlocks":"Hull Protection","location":"Ship research tree (Mastery)","description":"Costs 2 Torn Pages. Required for the main route — research it before any optional branch."},
+  {"slug":"upgraded-engine-blueprint","name":"Upgraded Engine","unlocks":"Upgraded Engine","location":"Ship research tree (Mastery)","description":"Costs 2 Torn Pages. The second required research on the route to The Throat."},
+  {"slug":"wind-up-tin-blueprint","name":"Wind-Up Tin","unlocks":"Wind-Up Tin","location":"Fishing research tree; blueprint given by Gill and Bozur","description":"Costs 0 Torn Pages. Unlocks the peaceful bait needed for the Softgrazer contract."},
+  {"slug":"rainbow-fin-blueprint","name":"Rainbow Fin","unlocks":"Rainbow Fin","location":"Fishing research tree","description":"Costs 0 Torn Pages. Unlocks the predator bait needed for the Harpooner contract."},
+  {"slug":"sturdy-earcrawler-blueprint","name":"Sturdy Earcrawler","unlocks":"Sturdy Earcrawler","location":"Fishing research tree","description":"Costs 0 Torn Pages. Trophy-chance peaceful lure."},
+  {"slug":"flaming-belly-blueprint","name":"Flaming Belly","unlocks":"Flaming Belly","location":"Fishing research tree","description":"Costs 0 Torn Pages. Trophy-chance predator lure."},
+  {"slug":"deadly-tick-blueprint","name":"Deadly Tick","unlocks":"Deadly Tick","location":"Fishing research tree","description":"Costs 5 Torn Pages — the most expensive fishing research in the demo. Late-demo project."},
+  {"slug":"braided-line-blueprint","name":"Braided Line","unlocks":"Braided Line","location":"Fishing research tree","description":"Costs 0 Torn Pages. Stronger line with more tension margin."},
+  {"slug":"reinforced-rod-blueprint","name":"Reinforced Rod","unlocks":"Reinforced Rod","location":"Fishing research tree","description":"Costs 0 Torn Pages. Tires fish out faster."},
+  {"slug":"baitcasting-reel-blueprint","name":"Baitcasting Reel","unlocks":"Baitcasting Reel","location":"Fishing research tree","description":"Costs 0 Torn Pages. Faster line recovery."},
+  {"slug":"reinforced-hook-grip-blueprint","name":"Reinforced Hook Grip","unlocks":"Reinforced Hook Grip","location":"Tools research tree","description":"Costs 0 Torn Pages. Hook Gun upgrade for heavier salvage."},
+  {"slug":"serrated-axe-edge-blueprint","name":"Serrated Axe Edge","unlocks":"Serrated Axe Edge","location":"Tools research tree","description":"Costs 0 Torn Pages. Axe upgrade for faster coral and crate breaking."}
+]
