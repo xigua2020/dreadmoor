@@ -10,6 +10,7 @@ export interface Fish {
   bait?: string;
   rarity?: string;
   sellValue?: string;
+  processing?: string;
   description?: string;
   image?: string;
   related?: string[];

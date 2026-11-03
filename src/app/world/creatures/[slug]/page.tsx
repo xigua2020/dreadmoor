@@ -43,7 +43,8 @@ export default async function CreatureDetailPage({ params }: { params: Promise<{
           { label: "Weakness", value: entry.weakness },
         ]}
         related={[
-          { label: "Survival & Combat Guide", href: "/survival/" },
+          { label: "Combat Guide", href: "/guides/combat-guide/" },
+          { label: "Survival Guide", href: "/guides/survival-guide/" },
           { label: "Locations", href: "/world/locations/" },
         ]}
       />

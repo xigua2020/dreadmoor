@@ -56,6 +56,8 @@ Speak to **Gill and Bozur**. They explain the Sea Blight and offer an **Essence*
 
 Place the chest in its marked position, **patch the hole in the wall**, then sleep until morning. Gill and Bozur contact you with the first fishing assignment. **Collect the Simple Rod** before leaving, then meet the traders at the fishing platform behind the Dry Dock.
 
+![Patching the bunkhouse wall — the night objective waits for a secure room](/images/bunkhouse-repair.webp)
+
 ## Chapter 4: The Five-Snapper Contract
 
 Equip the Simple Rod and **Earthworm**. Cast into the active water, keep the rod still until a Snapper bites, then pull opposite its movement to drain Stamina. Reel when it tires and stop reeling before Line Tension fills. Catch five and deliver them whole. If fish keep escaping, switch the rod control scheme in the settings — a stronger rod is not the fix here.
@@ -90,6 +92,8 @@ Ask Gill and Bozur for the next job to receive the **Wind-Up Tin blueprint**. Cr
 ## Chapter 8: The Carburetor and the Upgraded Engine
 
 Craft **Rainbow Fin** (1× Fish Meat, 1× Metal Plate, 1× Chromatic Scales). At the marked predator area, cast into a **splash zone** and retrieve steadily — too fast and the fish loses the lure, too slow and it loses interest. Catch **three Harpooners** and deliver them, then **buy the Carburetor from the shop for 50**. Back at the Dry Dock, raise the boat, remove and store the Standard Engine, craft the **Upgraded Engine** (10× Metal Plate, 4× Gear, 2× Machine Oil, 1× Carburetor) and install it. Boat speed rises from 2 kn to 4 kn.
+
+![Installing the Upgraded Engine in the empty engine mount](/images/engine-install.webp)
 
 ## Chapter 9: The Throat
 

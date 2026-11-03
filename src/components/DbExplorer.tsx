@@ -23,6 +23,7 @@ export interface DbRow {
   href?: string;
   icon?: string;
   iconTint?: string;
+  image?: string;
   cells: Record<string, CellValue>;
   filters?: Record<string, string[]>;
 }
@@ -177,10 +178,17 @@ export default function DbExplorer({
                     <td key={column.key}>
                       {columnIndex === 0 ? (
                         <span className="flex items-center gap-2.5">
-                          {row.icon && (
-                            <span className={`inline-flex shrink-0 rounded-md bg-teal/10 p-1.5 ${row.iconTint ?? "text-teal-light"}`}>
-                              <DbIcon name={row.icon} className="h-4 w-4" />
+                          {row.image ? (
+                            <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-elevated p-1">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={row.image} alt="" loading="lazy" className="h-full w-full object-contain" />
                             </span>
+                          ) : (
+                            row.icon && (
+                              <span className={`inline-flex shrink-0 rounded-md bg-teal/10 p-1.5 ${row.iconTint ?? "text-teal-light"}`}>
+                                <DbIcon name={row.icon} className="h-4 w-4" />
+                              </span>
+                            )
                           )}
                           {row.href ? (
                             <Link href={row.href} className="font-medium text-teal-light hover:underline">{content}</Link>

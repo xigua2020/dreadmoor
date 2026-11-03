@@ -30,6 +30,7 @@ export default function FishListPage() {
         rows={fish.map((f) => ({
           id: f.slug,
           href: `/fishing/fish-list/${f.slug}/`,
+          image: f.image,
           icon: "fish",
           iconTint: f.mutant ? "text-blood" : f.type === "Predatory" ? "text-copper-light" : "text-teal-light",
           cells: {

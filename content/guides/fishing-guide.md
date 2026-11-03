@@ -50,6 +50,8 @@ A hooked fish swims against the rod. Pull in the opposite direction to drain its
 
 **Line Tension** is the strain meter. Reeling against an actively fighting fish raises it; so does letting a fish run far from the boat. At maximum, the line snaps. The dangerous moment is usually the final retrieval — the fish looks close and makes one more run. Ease off, let it take line, then resume. Losing a metre is cheaper than losing the catch. A **Braided Line** upgrade gives more margin but not immunity.
 
+![Fishing from the trawler — keep the rod opposing the fish's run](/images/fishing-preview.avif)
+
 ## Bait by Temperament
 
 Bait is a category, not a flavour. Using the wrong category usually means no bite at all.

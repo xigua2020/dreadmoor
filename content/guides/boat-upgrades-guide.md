@@ -51,6 +51,8 @@ The Dry Dock is a physical workshop, not a menu. Before any module work:
 
 If a crafted component seems missing, check the **Storage Locker** before spending materials on a second copy.
 
+![The Dry Dock settlement — repairs, research and module work happen here](/images/settlement-drydock.webp)
+
 ## The Two Required Modules
 
 ### Hull Protection

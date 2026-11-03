@@ -44,6 +44,8 @@ DREADMOOR is not a monster-hunting game, but it is not a pure fishing sim either
 
 At night, a **giant tentacle** rises beside the boat and strikes it, dealing hull damage. There is no named boss fight in the demo — the tentacle is the sharp end of the night-travel risk:
 
+![A giant fish creature lunging at the trawler — night water is not free fishing](/images/night-fish-monster.webp)
+
 - Keep the boat **moving**; do not linger on open water after dark.
 - Stay inside and protect the **hull** — patch damage at the Dry Dock with Bug Slime.
 - Plan routes so night water is a choice, not a surprise.

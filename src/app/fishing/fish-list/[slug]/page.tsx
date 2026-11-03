@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bait, baitHref, bySlug, fish, locationHref } from "@/lib/data";
+import { bait, baitHref, bySlug, fish, locationHref, materialHref } from "@/lib/data";
 import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
@@ -49,6 +49,12 @@ export default async function FishDetailPage({ params }: { params: Promise<{ slu
             )),
           },
           { label: "Sell Value", value: entry.sellValue },
+          {
+            label: "Processing",
+            value: entry.processing ? (
+              <MaybeLink href={materialHref(entry.processing)}>{entry.processing}</MaybeLink>
+            ) : undefined,
+          },
         ]}
         related={[
           ...(baitEntry ? [{ label: `Bait: ${baitEntry.name}`, href: "/fishing/bait/" }] : []),

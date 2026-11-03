@@ -27,6 +27,7 @@ export default function BaitPage() {
         rows={bait.map((b) => ({
           id: b.slug,
           href: `/fishing/bait/${b.slug}/`,
+          image: b.image,
           icon: b.slug === "earthworm" ? "worm" : "bait",
           iconTint: b.rarity === "Unique" ? "text-copper-light" : "text-teal-light",
           cells: {

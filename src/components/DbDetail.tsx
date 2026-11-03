@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 /** Shared detail layout for database entries (fish, upgrades, recipes…). */
@@ -21,8 +20,10 @@ export default function DbDetail({
       <div>
         {description && <p className="leading-7 text-muted">{description}</p>}
         {image && (
-          <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-xl border border-teal/30">
-            <Image src={image} alt={name} fill sizes="(max-width: 768px) 100vw, 60vw" className="object-cover" />
+          <div className="mt-6 flex h-56 items-center justify-center rounded-xl border border-teal/30 bg-gradient-to-b from-elevated to-surface p-6">
+            {/* Item renders are square with alpha — show contained, not cropped. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={image} alt={name} className="h-full w-auto object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]" />
           </div>
         )}
       </div>
