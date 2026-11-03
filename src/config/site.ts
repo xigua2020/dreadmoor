@@ -14,7 +14,7 @@ export const site = {
   steamCommunityUrl: "https://steamcommunity.com/app/3629430",
   /** Featured gameplay video (config-managed; not an official trailer). */
   featuredVideoId: "qvA5Ovz2mPs",
-  gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
+  gaId: process.env.NEXT_PUBLIC_GA_ID ?? "G-PNKRB0YV4W",
   adsEnabled: process.env.NEXT_PUBLIC_ADS_ENABLED === "1",
 } as const;
 
