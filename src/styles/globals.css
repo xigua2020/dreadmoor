@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* DREADMOOR deep-sea palette (from design brief) */
+  --color-abyss: hsl(195 36% 7%);
+  --color-surface: hsl(193 30% 11%);
+  --color-elevated: hsl(190 24% 15%);
+  --color-ink: hsl(42 25% 91%);
+  --color-muted: hsl(188 12% 65%);
+  --color-teal: hsl(174 54% 46%);
+  --color-teal-light: hsl(174 60% 56%);
+  --color-sea: hsl(174 44% 36%);
+  --color-copper: hsl(22 55% 53%);
+  --color-copper-light: hsl(22 65% 63%);
+  --color-blood: hsl(4 62% 47%);
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Georgia", "Times New Roman", serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  /* deep-sea gradient + subtle depth texture */
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, hsl(174 44% 14% / 0.55), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, hsl(195 50% 12% / 0.6), transparent 60%),
+    linear-gradient(180deg, hsl(195 36% 8%) 0%, var(--color-abyss) 40%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* ---- shared surfaces ---- */
+.card {
+  background: linear-gradient(160deg, var(--color-elevated), var(--color-surface));
+  border: 1px solid hsl(174 30% 30% / 0.35);
+  border-radius: 0.75rem;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+a.card:hover, .card.hoverable:hover {
+  transform: translateY(-2px);
+  border-color: hsl(174 54% 46% / 0.7);
+  box-shadow: 0 8px 30px hsl(195 60% 4% / 0.7);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary {
+  background: var(--color-teal);
+  color: hsl(195 36% 7%);
+}
+.btn-primary:hover { background: var(--color-teal-light); }
+.btn-outline {
+  border: 1px solid hsl(174 54% 46% / 0.6);
+  color: var(--color-teal-light);
+}
+.btn-outline:hover { background: hsl(174 54% 46% / 0.12); }
+.btn-copper {
+  background: var(--color-copper);
+  color: hsl(42 25% 95%);
+}
+.btn-copper:hover { background: var(--color-copper-light); }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-copper-light);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* ---- article typography ---- */
+.prose-dm h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 1.8em 0 0.6em;
+  color: var(--color-ink);
+}
+.prose-dm h3 { font-size: 1.1rem; font-weight: 700; margin: 1.4em 0 0.5em; }
+.prose-dm p { margin: 0.8em 0; line-height: 1.75; color: hsl(42 20% 84%); }
+.prose-dm ul, .prose-dm ol { margin: 0.8em 0 0.8em 1.4em; line-height: 1.7; color: hsl(42 20% 84%); }
+.prose-dm ul { list-style: disc; }
+.prose-dm ol { list-style: decimal; }
+.prose-dm a { color: var(--color-teal-light); text-decoration: underline; text-underline-offset: 3px; }
+.prose-dm strong { color: var(--color-ink); }
+.prose-dm table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.92rem; }
+.prose-dm th, .prose-dm td { border: 1px solid hsl(174 30% 30% / 0.4); padding: 0.5em 0.7em; text-align: left; }
+.prose-dm th { background: var(--color-elevated); color: var(--color-ink); }
+.prose-dm img { border-radius: 0.5rem; }
+
+/* data tables */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.data-table th, .data-table td {
+  border-bottom: 1px solid hsl(174 30% 30% / 0.35);
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+.data-table thead th {
+  background: var(--color-elevated);
+  color: var(--color-ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.data-table tbody tr:hover { background: hsl(174 44% 20% / 0.25); }
+
+/* thin scrollbars for dark theme */
+* { scrollbar-color: var(--color-sea) transparent; }
