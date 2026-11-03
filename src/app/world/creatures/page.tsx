@@ -27,6 +27,8 @@ export default function CreaturesPage() {
         rows={creatures.map((c) => ({
           id: c.slug,
           href: `/world/creatures/${c.slug}/`,
+          icon: "creature",
+          iconTint: /Enemy|Threat|Hazard/.test(c.type ?? "") ? "text-blood" : "text-teal-light",
           cells: {
             name: c.name,
             type: c.type ?? "—",

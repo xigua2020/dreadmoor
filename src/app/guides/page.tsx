@@ -43,7 +43,8 @@ export default function GuidesPage() {
         </ul>
         <p>
           New here? The beginner guide, controls reference and essential tips below are the best
-          first reads. Articles are published as they are verified against the released game.
+          first reads. Articles are verified in-game — currently against the official October 2026
+          demo — and re-checked when Early Access launches.
         </p>
       </div>
 

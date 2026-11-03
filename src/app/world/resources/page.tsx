@@ -28,6 +28,7 @@ export default function ResourcesPage() {
       <DbExplorer
         rows={materials.map((m) => ({
           id: m.slug,
+          icon: "material",
           cells: {
             name: m.name,
             locations: m.locations?.length

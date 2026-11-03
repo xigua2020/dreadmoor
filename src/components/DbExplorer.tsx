@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import DbIcon from "./DbIcon";
 
 /** Serializable cell value: plain text or a list of linkable parts. */
 export type CellValue = string | { parts: { text: string; href?: string }[] };
@@ -20,6 +21,8 @@ export interface DbFilter {
 export interface DbRow {
   id: string;
   href?: string;
+  icon?: string;
+  iconTint?: string;
   cells: Record<string, CellValue>;
   filters?: Record<string, string[]>;
 }
@@ -172,8 +175,19 @@ export default function DbExplorer({
                     );
                   return (
                     <td key={column.key}>
-                      {columnIndex === 0 && row.href ? (
-                        <Link href={row.href} className="font-medium text-teal-light hover:underline">{content}</Link>
+                      {columnIndex === 0 ? (
+                        <span className="flex items-center gap-2.5">
+                          {row.icon && (
+                            <span className={`inline-flex shrink-0 rounded-md bg-teal/10 p-1.5 ${row.iconTint ?? "text-teal-light"}`}>
+                              <DbIcon name={row.icon} className="h-4 w-4" />
+                            </span>
+                          )}
+                          {row.href ? (
+                            <Link href={row.href} className="font-medium text-teal-light hover:underline">{content}</Link>
+                          ) : (
+                            <span className="font-medium">{content}</span>
+                          )}
+                        </span>
                       ) : (
                         content
                       )}

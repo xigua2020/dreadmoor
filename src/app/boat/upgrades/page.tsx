@@ -28,6 +28,7 @@ export default function BoatUpgradesPage() {
         rows={boatUpgrades.map((u) => ({
           id: u.slug,
           href: `/boat/upgrades/${u.slug}/`,
+          icon: u.component === "Engine" ? "engine" : u.component === "Hull" ? "hull" : u.component === "Propeller" ? "propeller" : "aux",
           cells: {
             name: u.name,
             component: u.component ?? "—",

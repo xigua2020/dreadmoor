@@ -28,6 +28,8 @@ export default function LocationsPage() {
         rows={locations.map((l) => ({
           id: l.slug,
           href: `/world/locations/${l.slug}/`,
+          icon: "location",
+          iconTint: l.type === "Danger" ? "text-blood" : l.type === "Fishing" ? "text-teal-light" : undefined,
           cells: {
             name: l.name,
             region: l.region ?? "—",

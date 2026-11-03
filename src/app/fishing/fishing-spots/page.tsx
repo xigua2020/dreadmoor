@@ -27,6 +27,7 @@ export default function FishingSpotsPage() {
       <DbExplorer
         rows={fishingSpots.map((s) => ({
           id: s.slug,
+          icon: "map",
           cells: {
             name: { parts: [{ text: s.name, href: locationHref(s.name) ?? undefined }] },
             region: s.region ?? "—",

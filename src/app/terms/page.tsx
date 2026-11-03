@@ -20,9 +20,10 @@ export default function TermsPage() {
         </p>
         <h2>Content</h2>
         <p>
-          We work to keep guides and database entries accurate against the released game, but game
-          content changes over time — especially during Early Access — and information may become
-          outdated. Content is provided &quot;as is&quot;, without warranties of any kind.
+          We work to keep guides and database entries accurate and clearly version-labelled, but
+          game content changes over time — especially between the demo period and Early Access —
+          and information may become outdated. Content is provided &quot;as is&quot;, without
+          warranties of any kind.
         </p>
         <h2>Intellectual property</h2>
         <p>

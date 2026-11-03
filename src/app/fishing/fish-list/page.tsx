@@ -22,13 +22,16 @@ export default function FishListPage() {
       <h1 className="font-display text-3xl font-bold text-ink">DREADMOOR Fish List</h1>
       <p className="mb-6 mt-3 max-w-3xl leading-7 text-muted">
         All {fish.length} fish species recorded in DREADMOOR, with level, temperament, habitat,
-        effective bait and value per kilogram. Data verified against the October 2026 demo build
-        and updated for Early Access. Search, filter and sort the ledger below.
+        effective bait and value per kilogram. Data is verified against the official October 2026
+        demo build and will be re-checked against Early Access at launch. Search, filter and sort
+        the ledger below.
       </p>
       <DbExplorer
         rows={fish.map((f) => ({
           id: f.slug,
           href: `/fishing/fish-list/${f.slug}/`,
+          icon: "fish",
+          iconTint: f.mutant ? "text-blood" : f.type === "Predatory" ? "text-copper-light" : "text-teal-light",
           cells: {
             name: f.name,
             level: f.level !== undefined ? `Lv ${f.level}` : "—",

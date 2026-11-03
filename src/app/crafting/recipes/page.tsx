@@ -27,6 +27,7 @@ export default function RecipesPage() {
         rows={recipes.map((r) => ({
           id: r.slug,
           href: `/crafting/recipes/${r.slug}/`,
+          icon: r.station === "Ship Upgrades Table" ? "boat" : "recipe",
           cells: {
             name: r.name,
             station: r.station ?? "—",

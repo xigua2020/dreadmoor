@@ -26,6 +26,7 @@ export default function BlueprintsPage() {
       <DbExplorer
         rows={blueprints.map((b) => ({
           id: b.slug,
+          icon: "blueprint",
           cells: {
             name: b.name,
             unlocks: b.unlocks ? { parts: [{ text: b.unlocks, href: recipeHref(b.unlocks) ?? undefined }] } : "—",

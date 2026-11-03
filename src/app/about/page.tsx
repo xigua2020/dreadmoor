@@ -23,8 +23,9 @@ export default function AboutPage() {
         <p>
           Our goal is simple: practical, verified information. We publish guides and database
           entries — fish species, bait, boat upgrades, crafting recipes, locations, creatures and
-          quests — based on the released game, and we update them as the game evolves through Early
-          Access.
+          quests — based on what can be verified in-game. While DREADMOOR is in its official demo
+          period, our content is verified against that demo and clearly version-labelled; every
+          entry will be re-checked against the released game once Early Access opens.
         </p>
         <p>
           This website is not affiliated with, endorsed by, or connected to Dream Dock or Digital
