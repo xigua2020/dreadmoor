@@ -3,6 +3,7 @@ import {
   bait,
   blueprints,
   boatUpgrades,
+  characters,
   creatures,
   fish,
   fishingSpots,
@@ -10,6 +11,7 @@ import {
   materials,
   quests,
   recipes,
+  settlements,
 } from "./data";
 import { getGuides } from "./guides";
 import type { SearchItem } from "./types";
@@ -80,6 +82,10 @@ export function getSearchIndex(): SearchItem[] {
   materials.forEach((e) => items.push({ title: e.name, href: `/world/resources/#${e.slug}`, description: e.description ?? "Material", section: "World" }));
   creatures.forEach((e) => items.push({ title: e.name, href: `/world/creatures/${e.slug}/`, description: e.description ?? "Creature", section: "Creatures" }));
   locations.forEach((e) => items.push({ title: e.name, href: `/world/locations/${e.slug}/`, description: e.description ?? "Location", section: "World" }));
+  characters.forEach((e) => items.push({ title: e.name, href: `/world/characters/${e.slug}/`, description: e.description ?? "Character", section: "World" }));
+  settlements.forEach((e) => items.push({ title: e.name, href: `/world/settlements/${e.slug}/`, description: e.description ?? "Settlement", section: "World" }));
+  items.push({ title: "DREADMOOR Lore & World Background", href: "/world/lore/", description: "The Submerged Lands, the Sea Blight and Malcolm's story.", section: "World" });
+  items.push({ title: "The Sea Blight", href: "/world/sea-blight/", description: "Mutations, blighted areas and survival methods.", section: "World" });
   quests.forEach((e) => items.push({ title: e.name, href: `/quests/${e.slug}/`, description: e.walkthrough?.slice(0, 120) ?? "Quest", section: "Quests" }));
   return items;
 }

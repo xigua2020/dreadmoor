@@ -6,7 +6,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { getGuides } from "@/lib/guides";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Guides – Beginner Guide, Controls, Tips & Walkthroughs",
+  title: "DREADMOOR Guides – All Tips & Walkthroughs",
   description:
     "All DREADMOOR guides in one place: beginner guide, controls, fishing tips, boat management, crafting and story walkthroughs for the Submerged Lands.",
   path: "/guides/",

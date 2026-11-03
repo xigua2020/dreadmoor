@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { fishingSpots, fishHref, locationHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Fishing Spots – Rare Fish Locations by Region",
+  title: "DREADMOOR Fishing Spots – Rare Fish Locations",
   description:
     "DREADMOOR fishing spots guide: where to find each fish species across the Submerged Lands, including rare fish locations.",
   path: "/fishing/fishing-spots/",

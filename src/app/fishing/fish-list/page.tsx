@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { baitHref, fish, locationHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Fish List – All 28 Fish Species, Baits & Locations",
+  title: "DREADMOOR Fish List – All 28 Species & Baits",
   description:
     "Complete DREADMOOR fish list: all 28 species including Sea Blight mutants, with levels, habitats, bait, temperament and sell value per kilogram.",
   path: "/fishing/fish-list/",
@@ -38,6 +38,7 @@ export default function FishListPage() {
             level: f.level !== undefined ? `Lv ${f.level}` : "—",
             type: f.type ?? "—",
             mutation: f.mutant ? "Mutant" : "Standard",
+            activeTime: f.activeTime ?? "Anytime",
             location: f.location ? { parts: [{ text: f.location, href: locationHref(f.location) ?? undefined }] } : "—",
             bait: f.bait
               ? {
@@ -52,6 +53,7 @@ export default function FishListPage() {
           filters: {
             type: f.type ? [f.type] : [],
             mutation: [f.mutant ? "Mutant" : "Standard"],
+            activeTime: f.activeTime ? [f.activeTime] : ["Anytime"],
             bait: f.bait ? f.bait.split(" / ") : [],
             location: f.location ? [f.location] : [],
           },
@@ -61,6 +63,7 @@ export default function FishListPage() {
           { key: "level", label: "Level", sortable: true },
           { key: "type", label: "Type", sortable: true },
           { key: "mutation", label: "Mutation", sortable: true },
+          { key: "activeTime", label: "Active", sortable: true },
           { key: "location", label: "Habitat", sortable: true },
           { key: "bait", label: "Effective Bait" },
           { key: "value", label: "Value", sortable: true },
@@ -68,6 +71,7 @@ export default function FishListPage() {
         filters={[
           { key: "type", label: "Type" },
           { key: "mutation", label: "Mutation" },
+          { key: "activeTime", label: "Active Time" },
           { key: "bait", label: "Bait" },
           { key: "location", label: "Habitat" },
         ]}

@@ -8,6 +8,7 @@ import type {
   Bait,
   Blueprint,
   BoatUpgrade,
+  Character,
   Creature,
   Fish,
   FishingSpot,
@@ -15,6 +16,7 @@ import type {
   Material,
   Quest,
   Recipe,
+  Settlement,
 } from "./types";
 
 import fishData from "../data/fish.json";
@@ -27,6 +29,8 @@ import materialsData from "../data/materials.json";
 import creaturesData from "../data/creatures.json";
 import locationsData from "../data/locations.json";
 import questsData from "../data/quests.json";
+import charactersData from "../data/characters.json";
+import settlementsData from "../data/settlements.json";
 
 export const fish = fishData as Fish[];
 export const bait = baitData as Bait[];
@@ -38,6 +42,8 @@ export const materials = materialsData as Material[];
 export const creatures = creaturesData as Creature[];
 export const locations = locationsData as LocationEntry[];
 export const quests = questsData as Quest[];
+export const characters = charactersData as Character[];
+export const settlements = settlementsData as Settlement[];
 
 export function bySlug<T extends { slug: string }>(list: T[], slug: string): T | undefined {
   return list.find((entry) => entry.slug === slug);
@@ -87,4 +93,12 @@ export const upgradeHref = (name?: string) => {
 export const questHref = (name?: string) => {
   const e = matchByName(quests, name);
   return e ? `/quests/${e.slug}/` : null;
+};
+export const characterHref = (name?: string) => {
+  const e = matchByName(characters, name);
+  return e ? `/world/characters/${e.slug}/` : null;
+};
+export const settlementHref = (name?: string) => {
+  const e = matchByName(settlements, name);
+  return e ? `/world/settlements/${e.slug}/` : null;
 };

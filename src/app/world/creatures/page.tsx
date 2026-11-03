@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { creatures, locationHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Creatures & Monsters – Types, Locations & Behavior",
+  title: "DREADMOOR Creatures – Monsters & Behavior",
   description:
     "DREADMOOR creatures database: monsters and mutated creatures of the Submerged Lands, with locations, behavior and combat notes.",
   path: "/world/creatures/",
@@ -27,26 +27,31 @@ export default function CreaturesPage() {
         rows={creatures.map((c) => ({
           id: c.slug,
           href: `/world/creatures/${c.slug}/`,
+          image: c.image,
           icon: "creature",
           iconTint: /Enemy|Threat|Hazard/.test(c.type ?? "") ? "text-blood" : "text-teal-light",
           cells: {
             name: c.name,
-            type: c.type ?? "—",
+            category: c.category ?? "—",
+            threat: c.threat ?? "—",
             location: c.location ? { parts: [{ text: c.location, href: locationHref(c.location) ?? undefined }] } : "—",
             behavior: c.behavior ?? "—",
           },
           filters: {
+            category: c.category ? [c.category] : [],
             type: c.type ? [c.type] : [],
             location: c.location ? [c.location] : [],
           },
         }))}
         columns={[
           { key: "name", label: "Creature", sortable: true },
-          { key: "type", label: "Type", sortable: true },
+          { key: "category", label: "Category", sortable: true },
+          { key: "threat", label: "Threat", sortable: true },
           { key: "location", label: "Location", sortable: true },
           { key: "behavior", label: "Behavior" },
         ]}
         filters={[
+          { key: "category", label: "Category" },
           { key: "type", label: "Type" },
           { key: "location", label: "Location" },
         ]}

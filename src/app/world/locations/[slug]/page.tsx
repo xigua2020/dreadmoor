@@ -5,7 +5,7 @@ import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import MaybeLink from "@/components/MaybeLink";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, fishHref, locations, materialHref, questHref } from "@/lib/data";
+import { bySlug, creatureHref, fishHref, locations, materialHref, questHref } from "@/lib/data";
 
 export function generateStaticParams() {
   return locations.map((l) => ({ slug: l.slug }));
@@ -54,6 +54,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
           { label: "Fish", value: linkedList(entry.fish, fishHref) },
           { label: "Resources", value: linkedList(entry.resources, materialHref) },
           { label: "Quests", value: linkedList(entry.quests, questHref) },
+          { label: "Creatures", value: linkedList(entry.creatures, creatureHref) },
         ]}
         related={[
           { label: "World Map", href: "/world/map/" },

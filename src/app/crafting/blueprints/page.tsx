@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { blueprints, locationHref, recipeHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Blueprints – All Blueprint Locations & Unlocks",
+  title: "DREADMOOR Blueprints – Locations & Unlocks",
   description:
     "DREADMOOR blueprints guide: where to find every blueprint and which crafting recipe or equipment each one unlocks.",
   path: "/crafting/blueprints/",
@@ -31,6 +31,7 @@ export default function BlueprintsPage() {
             name: b.name,
             unlocks: b.unlocks ? { parts: [{ text: b.unlocks, href: recipeHref(b.unlocks) ?? undefined }] } : "—",
             location: b.location ? { parts: [{ text: b.location, href: locationHref(b.location) ?? undefined }] } : "—",
+            npc: b.npc ?? "—",
           },
           filters: { location: b.location ? [b.location] : [] },
         }))}
@@ -38,6 +39,7 @@ export default function BlueprintsPage() {
           { key: "name", label: "Blueprint", sortable: true },
           { key: "unlocks", label: "Unlocks", sortable: true },
           { key: "location", label: "Location", sortable: true },
+          { key: "npc", label: "Related NPC" },
         ]}
         filters={[{ key: "location", label: "Location" }]}
         searchPlaceholder="Search blueprints…"

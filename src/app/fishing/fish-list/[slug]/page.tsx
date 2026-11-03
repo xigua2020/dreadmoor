@@ -41,6 +41,7 @@ export default async function FishDetailPage({ params }: { params: Promise<{ slu
           { label: "Temperament", value: entry.type },
           { label: "Level", value: entry.level !== undefined ? `Lv ${entry.level}` : undefined },
           { label: "Mutation", value: entry.mutant === undefined ? undefined : entry.mutant ? "Sea Blight mutant" : "Standard" },
+          { label: "Active Time", value: entry.activeTime },
           { label: "Habitat", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
           {
             label: "Effective Bait",

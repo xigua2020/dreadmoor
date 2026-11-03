@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { boatUpgrades, materialHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Boat Upgrades – All Trawler Upgrades, Materials & Costs",
+  title: "DREADMOOR Boat Upgrades – Materials & Effects",
   description:
     "DREADMOOR boat upgrades database: engine, propeller, hull, spotlight and equipment upgrades with materials, costs, effects and requirements.",
   path: "/boat/upgrades/",
@@ -28,6 +28,7 @@ export default function BoatUpgradesPage() {
         rows={boatUpgrades.map((u) => ({
           id: u.slug,
           href: `/boat/upgrades/${u.slug}/`,
+          image: u.image,
           icon: u.component === "Engine" ? "engine" : u.component === "Hull" ? "hull" : u.component === "Propeller" ? "propeller" : "aux",
           cells: {
             name: u.name,

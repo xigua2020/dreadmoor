@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, locationHref, quests } from "@/lib/data";
+import { bySlug, characterHref, locationHref, quests } from "@/lib/data";
 import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
@@ -53,9 +53,10 @@ export default async function QuestDetailPage({ params }: { params: Promise<{ sl
           <dl className="space-y-2.5 text-sm">
             {([
               ["Type", entry.type],
-              ["Quest Giver", entry.giver],
+              ["Quest Giver", entry.giver ? <MaybeLink href={characterHref(entry.giver)}>{entry.giver}</MaybeLink> : undefined],
               ["Location", entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined],
               ["Prerequisites", entry.prerequisites?.join(", ")],
+              ["Related Items", entry.items?.join(", ")],
               ["Rewards", entry.rewards?.join(", ")],
             ] as [string, React.ReactNode][]).filter(([, v]) => v).map(([label, value]) => (
               <div key={label} className="flex justify-between gap-3 border-b border-teal/10 pb-2">

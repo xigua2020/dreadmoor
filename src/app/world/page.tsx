@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { creatures, locations, materials } from "@/lib/data";
+import { characters, creatures, locations, materials, settlements } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR World Guide – Map, Locations, Creatures & the Sea Blight",
+  title: "DREADMOOR World Guide – Map, Locations & Lore",
   description:
     "Explore DREADMOOR's Submerged Lands: world map, regions, settlements, traders, shipwrecks, caves, and the mutated creatures born of the Sea Blight.",
   path: "/world/",
@@ -53,6 +53,16 @@ export default function WorldPage() {
           <p className="mt-1 text-sm text-muted">Settlements, traders and points of interest.</p>
           {locations.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{locations.length} entries</p>}
         </Link>
+        <Link href={characters.length ? "/world/characters/" : "/world/"} className="card block p-5" aria-disabled={!characters.length}>
+          <h2 className="font-display text-lg font-bold text-ink">Characters</h2>
+          <p className="mt-1 text-sm text-muted">Malcolm, the traders, the engineer and Betsy.</p>
+          {characters.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{characters.length} entries</p>}
+        </Link>
+        <Link href={settlements.length ? "/world/settlements/" : "/world/"} className="card block p-5" aria-disabled={!settlements.length}>
+          <h2 className="font-display text-lg font-bold text-ink">Settlements</h2>
+          <p className="mt-1 text-sm text-muted">Services, merchants and quests by settlement.</p>
+          {settlements.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{settlements.length} entries</p>}
+        </Link>
         <Link href={creatures.length ? "/world/creatures/" : "/world/"} className="card block p-5" aria-disabled={!creatures.length}>
           <h2 className="font-display text-lg font-bold text-ink">Creatures</h2>
           <p className="mt-1 text-sm text-muted">Mutated monsters, behavior and habitats.</p>
@@ -62,6 +72,14 @@ export default function WorldPage() {
           <h2 className="font-display text-lg font-bold text-ink">Resources</h2>
           <p className="mt-1 text-sm text-muted">Scrap metal and material gathering locations.</p>
           {materials.length > 0 && <p className="mt-2 text-xs font-semibold text-teal-light">{materials.length} entries</p>}
+        </Link>
+        <Link href="/world/lore/" className="card block p-5">
+          <h2 className="font-display text-lg font-bold text-ink">Lore</h2>
+          <p className="mt-1 text-sm text-muted">The flood, the Sea Blight and what the world remembers.</p>
+        </Link>
+        <Link href="/world/sea-blight/" className="card block p-5">
+          <h2 className="font-display text-lg font-bold text-ink">The Sea Blight</h2>
+          <p className="mt-1 text-sm text-muted">Mutations, blighted areas and survival methods.</p>
         </Link>
         <Link href={locations.length ? "/world/map/" : "/world/"} className="card block p-5" aria-disabled={!locations.length}>
           <h2 className="font-display text-lg font-bold text-ink">World Map</h2>

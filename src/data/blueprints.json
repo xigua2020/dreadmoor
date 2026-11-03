@@ -1,7 +1,7 @@
 [
   {"slug":"weak-hull-protection","name":"Weak Hull Protection","unlocks":"Hull Protection","location":"Ship research tree (Mastery)","description":"Costs 2 Torn Pages. Required for the main route — research it before any optional branch."},
   {"slug":"upgraded-engine-blueprint","name":"Upgraded Engine","unlocks":"Upgraded Engine","location":"Ship research tree (Mastery)","description":"Costs 2 Torn Pages. The second required research on the route to The Throat."},
-  {"slug":"wind-up-tin-blueprint","name":"Wind-Up Tin","unlocks":"Wind-Up Tin","location":"Fishing research tree; blueprint given by Gill and Bozur","description":"Costs 0 Torn Pages. Unlocks the peaceful bait needed for the Softgrazer contract."},
+  {"slug":"wind-up-tin-blueprint","name":"Wind-Up Tin","unlocks":"Wind-Up Tin","location":"Fishing research tree; blueprint given by Gill and Bozur","npc":"Gill and Bozur","description":"Costs 0 Torn Pages. Unlocks the peaceful bait needed for the Softgrazer contract."},
   {"slug":"rainbow-fin-blueprint","name":"Rainbow Fin","unlocks":"Rainbow Fin","location":"Fishing research tree","description":"Costs 0 Torn Pages. Unlocks the predator bait needed for the Harpooner contract."},
   {"slug":"sturdy-earcrawler-blueprint","name":"Sturdy Earcrawler","unlocks":"Sturdy Earcrawler","location":"Fishing research tree","description":"Costs 0 Torn Pages. Trophy-chance peaceful lure."},
   {"slug":"flaming-belly-blueprint","name":"Flaming Belly","unlocks":"Flaming Belly","location":"Fishing research tree","description":"Costs 0 Torn Pages. Trophy-chance predator lure."},

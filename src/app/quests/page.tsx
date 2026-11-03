@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { quests } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Quests & Walkthrough – Story Quests, Objectives & Rewards",
+  title: "DREADMOOR Quest Guide – Walkthrough & Rewards",
   description:
     "DREADMOOR quest guide: main story quests and side quests with objectives, prerequisites, NPC locations and rewards across the Submerged Lands.",
   path: "/quests/",

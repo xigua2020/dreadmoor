@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { creatures } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Survival Guide – Combat, Creatures & Night Survival",
+  title: "DREADMOOR Survival Guide – Combat & Night",
   description:
     "DREADMOOR survival guide: combat mechanics, weapons and harpoons, dealing with mutated creatures, and how to survive the dangers of the Submerged Lands.",
   path: "/survival/",

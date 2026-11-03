@@ -11,8 +11,8 @@ import { site } from "@/config/site";
 import { getSearchIndex } from "@/lib/search-index";
 import { getGuides } from "@/lib/guides";
 import {
-  bait, blueprints, boatUpgrades, creatures, fish, fishingSpots,
-  locations, materials, quests, recipes,
+  bait, blueprints, boatUpgrades, characters, creatures, fish, fishingSpots,
+  locations, materials, quests, recipes, settlements,
 } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -88,6 +88,8 @@ export default function HomePage() {
     { title: "Resources", icon: "material", count: materials.length, href: materials.length ? "/world/resources/" : "/world/", description: "Scrap metal, salvage and where to gather them." },
     { title: "Creatures", icon: "creature", count: creatures.length, href: creatures.length ? "/world/creatures/" : "/world/", description: "Mutated creatures, behavior and combat notes." },
     { title: "Locations", icon: "location", count: locations.length, href: locations.length ? "/world/locations/" : "/world/", description: "Settlements, traders, caves and shipwrecks." },
+    { title: "Characters", icon: "quest", count: characters.length, href: characters.length ? "/world/characters/" : "/world/", description: "Malcolm, Gill, Bozur, John the Fifth and Betsy." },
+    { title: "Settlements", icon: "location", count: settlements.length, href: settlements.length ? "/world/settlements/" : "/world/", description: "Services, merchants and quests by settlement." },
     { title: "Quests", icon: "quest", count: quests.length, href: quests.length ? "/quests/" : "/quests/", description: "Objectives, prerequisites and rewards." },
   ];
   const hasUpdates = guides.length > 0;

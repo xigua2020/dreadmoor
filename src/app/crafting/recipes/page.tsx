@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { materialHref, recipes } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Crafting Recipes – All Recipes, Ingredients & Requirements",
+  title: "DREADMOOR Crafting Recipes – All 23 Recipes",
   description:
     "DREADMOOR crafting recipes database: ingredients, quantities, crafting requirements and effects for bait, harpoons, medicine and survival tools.",
   path: "/crafting/recipes/",
@@ -27,6 +27,7 @@ export default function RecipesPage() {
         rows={recipes.map((r) => ({
           id: r.slug,
           href: `/crafting/recipes/${r.slug}/`,
+          image: r.image,
           icon: r.station === "Ship Upgrades Table" ? "boat" : "recipe",
           cells: {
             name: r.name,

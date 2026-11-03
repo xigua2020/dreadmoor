@@ -7,9 +7,9 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { blueprints, materials, recipes } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Crafting Guide – Recipes, Blueprints & Materials",
+  title: "DREADMOOR Crafting Guide – Recipes & Materials",
   description:
-    "DREADMOOR crafting guide: crafting recipes, blueprint locations, scrap metal and material farming, and how to craft bait, harpoons, medicine and survival tools.",
+    "DREADMOOR crafting guide: recipes, blueprint locations, material farming, and how to craft bait, tools and survival gear.",
   path: "/crafting/",
   image: "/images/bunkhouse-repair.webp",
 });

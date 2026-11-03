@@ -38,6 +38,19 @@ export default async function GuideArticlePage({ params }: { params: Promise<{ s
   return (
     <div className="py-10">
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Guides", path: "/guides/" }, { name: guide.title, path: `/guides/${guide.slug}/` }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: guide.title,
+          description: guide.description,
+          ...(guide.updated ? { dateModified: guide.updated } : {}),
+          ...(guide.image ? { image: `${site.url}${guide.image}` } : {}),
+          author: { "@type": "Organization", name: site.name, url: site.url },
+          publisher: { "@type": "Organization", name: site.name, url: site.url },
+          mainEntityOfPage: `${site.url}/guides/${guide.slug}/`,
+        }}
+      />
       {guide.faq.length > 0 && (
         <JsonLd
           data={{

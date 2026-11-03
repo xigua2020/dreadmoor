@@ -37,10 +37,12 @@ export default async function CreatureDetailPage({ params }: { params: Promise<{
         image={entry.image}
         description={entry.description}
         facts={[
+          { label: "Category", value: entry.category },
           { label: "Type", value: entry.type },
+          { label: "Threat Level", value: entry.threat },
           { label: "Location", value: entry.location ? <MaybeLink href={locationHref(entry.location)}>{entry.location}</MaybeLink> : undefined },
           { label: "Behavior", value: entry.behavior },
-          { label: "Weakness", value: entry.weakness },
+          { label: "How to Deal With", value: entry.weakness },
         ]}
         related={[
           { label: "Combat Guide", href: "/guides/combat-guide/" },

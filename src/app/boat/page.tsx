@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { boatUpgrades } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Boat Upgrades Guide – Engine, Hull, Fuel & Repairs",
+  title: "DREADMOOR Boat Guide – Upgrades, Fuel & Repairs",
   description:
     "DREADMOOR boat guide: trawler upgrades for engine, propeller, hull and spotlight, plus fuel management, dry dock services and hull repair explained.",
   path: "/boat/",

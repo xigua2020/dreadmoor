@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { locations } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Map – Regions & Locations of the Submerged Lands",
+  title: "DREADMOOR Map – Regions & Locations",
   description:
     "DREADMOOR world map overview: regions, settlements and points of interest across the Submerged Lands.",
   path: "/world/map/",

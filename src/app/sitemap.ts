@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 import { site, nav } from "@/config/site";
 import { getGuides } from "@/lib/guides";
 import {
-  boatUpgrades, creatures, fish, locations, materials, quests, recipes,
-  bait, blueprints, fishingSpots,
+  boatUpgrades, characters, creatures, fish, locations, materials, quests, recipes,
+  bait, blueprints, fishingSpots, settlements,
 } from "@/lib/data";
 
 /** Only published pages (with real content) are listed here. */
@@ -42,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const l of locations) urls.push({ url: `${site.url}/world/locations/${l.slug}/`, changeFrequency: "monthly", priority: 0.6 });
   if (creatures.length) urls.push({ url: `${site.url}/world/creatures/`, changeFrequency: "weekly", priority: 0.7 });
   for (const c of creatures) urls.push({ url: `${site.url}/world/creatures/${c.slug}/`, changeFrequency: "monthly", priority: 0.6 });
+  if (characters.length) urls.push({ url: `${site.url}/world/characters/`, changeFrequency: "weekly", priority: 0.7 });
+  for (const c of characters) urls.push({ url: `${site.url}/world/characters/${c.slug}/`, changeFrequency: "monthly", priority: 0.6 });
+  if (settlements.length) urls.push({ url: `${site.url}/world/settlements/`, changeFrequency: "weekly", priority: 0.7 });
+  for (const s of settlements) urls.push({ url: `${site.url}/world/settlements/${s.slug}/`, changeFrequency: "monthly", priority: 0.6 });
+  urls.push({ url: `${site.url}/world/lore/`, changeFrequency: "monthly", priority: 0.6 });
+  urls.push({ url: `${site.url}/world/sea-blight/`, changeFrequency: "monthly", priority: 0.6 });
   for (const q of quests) urls.push({ url: `${site.url}/quests/${q.slug}/`, changeFrequency: "monthly", priority: 0.6 });
 
   return urls;

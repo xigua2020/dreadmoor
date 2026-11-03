@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { bySlug, materialHref, recipes } from "@/lib/data";
+import { blueprints, bySlug, materialHref, recipes } from "@/lib/data";
 import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
@@ -27,6 +27,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
   const { slug } = await params;
   const entry = bySlug(recipes, slug);
   if (!entry) notFound();
+  const blueprint = blueprints.find((b) => b.unlocks?.toLowerCase() === entry.name.toLowerCase());
   return (
     <div className="py-10">
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Crafting", path: "/crafting/" }, { name: "Recipes", path: "/crafting/recipes/" }, { name: entry.name, path: `/crafting/recipes/${entry.slug}/` }])} />
@@ -45,6 +46,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
             )) },
           { label: "Requirements", value: entry.requirements },
           { label: "Effect / Usage", value: entry.effect },
+          { label: "Blueprint", value: blueprint ? <MaybeLink href="/crafting/blueprints/">{blueprint.name}</MaybeLink> : undefined },
         ]}
         related={[
           { label: "Materials & Locations", href: "/world/resources/" },

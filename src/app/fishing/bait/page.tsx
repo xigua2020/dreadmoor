@@ -32,23 +32,31 @@ export default function BaitPage() {
           iconTint: b.rarity === "Unique" ? "text-copper-light" : "text-teal-light",
           cells: {
             name: b.name,
+            type: b.type ?? "—",
             usedFor: b.usedFor?.length
               ? { parts: b.usedFor.map((name) => ({ text: name, href: fishHref(name) ?? undefined })) }
               : "—",
             materials: b.materials?.length
               ? { parts: b.materials.map((m) => ({ text: `${m.item} ×${m.qty}`, href: materialHref(m.item) ?? undefined })) }
               : "—",
-            howToGet: b.howToGet ?? "—",
+            unlock: b.unlock ?? "—",
           },
-          filters: { usedFor: b.usedFor ?? [] },
+          filters: {
+            usedFor: b.usedFor ?? [],
+            type: b.type ? [b.type] : [],
+          },
         }))}
         columns={[
           { key: "name", label: "Bait", sortable: true },
-          { key: "usedFor", label: "Used For", sortable: true },
+          { key: "type", label: "Type", sortable: true },
+          { key: "usedFor", label: "Effective Fish" },
           { key: "materials", label: "Materials" },
-          { key: "howToGet", label: "How to Get" },
+          { key: "unlock", label: "Unlock" },
         ]}
-        filters={[{ key: "usedFor", label: "Fish" }]}
+        filters={[
+          { key: "usedFor", label: "Fish" },
+          { key: "type", label: "Type" },
+        ]}
         searchPlaceholder="Search bait…"
       />
     </div>

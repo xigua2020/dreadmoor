@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import DbDetail from "@/components/DbDetail";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
-import { boatUpgrades, bySlug, materialHref } from "@/lib/data";
+import { boatUpgrades, bySlug, materialHref, recipeHref } from "@/lib/data";
 import MaybeLink from "@/components/MaybeLink";
 
 export function generateStaticParams() {
@@ -27,6 +27,7 @@ export default async function BoatUpgradeDetailPage({ params }: { params: Promis
   const { slug } = await params;
   const entry = bySlug(boatUpgrades, slug);
   if (!entry) notFound();
+  const matchingRecipe = recipeHref(entry.name);
   return (
     <div className="py-10">
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Boat", path: "/boat/" }, { name: "Upgrades", path: "/boat/upgrades/" }, { name: entry.name, path: `/boat/upgrades/${entry.slug}/` }])} />
@@ -47,11 +48,13 @@ export default async function BoatUpgradeDetailPage({ params }: { params: Promis
             )) },
           { label: "Cost", value: entry.cost },
           { label: "Effect", value: entry.effect },
+          { label: "Prerequisites", value: entry.prerequisites },
           { label: "Requirements", value: entry.requirements },
         ]}
         related={[
+          ...(matchingRecipe ? [{ label: `Recipe: ${entry.name}`, href: matchingRecipe }] : []),
           { label: "Materials & Salvage", href: "/world/resources/" },
-          { label: "Boat Guide", href: "/boat/" },
+          { label: "Boat Upgrades Guide", href: "/guides/boat-upgrades-guide/" },
         ]}
       />
     </div>

@@ -11,6 +11,7 @@ export interface Fish {
   rarity?: string;
   sellValue?: string;
   processing?: string;
+  activeTime?: string;
   description?: string;
   image?: string;
   related?: string[];
@@ -23,6 +24,8 @@ export interface Bait {
   usedFor?: string[];
   materials?: MaterialRef[];
   howToGet?: string;
+  type?: string;
+  unlock?: string;
   rarity?: string;
   value?: string;
   image?: string;
@@ -53,6 +56,7 @@ export interface BoatUpgrade {
   cost?: string;
   effect?: string;
   requirements?: string;
+  prerequisites?: string;
   image?: string;
 }
 
@@ -71,12 +75,14 @@ export interface Blueprint {
   name: string;
   unlocks?: string;
   location?: string;
+  npc?: string;
   description?: string;
 }
 
 export interface Material {
   slug: string;
   name: string;
+  type?: string;
   locations?: string[];
   usedIn?: string[];
   description?: string;
@@ -87,6 +93,8 @@ export interface Creature {
   slug: string;
   name: string;
   type?: string;
+  category?: string;
+  threat?: string;
   location?: string;
   behavior?: string;
   weakness?: string;
@@ -105,6 +113,7 @@ export interface LocationEntry {
   fish?: string[];
   resources?: string[];
   quests?: string[];
+  creatures?: string[];
   image?: string;
 }
 
@@ -117,7 +126,32 @@ export interface Quest {
   prerequisites?: string[];
   objectives?: string[];
   rewards?: string[];
+  items?: string[];
   walkthrough?: string;
+  image?: string;
+}
+
+export interface Character {
+  slug: string;
+  name: string;
+  role?: string;
+  description?: string;
+  location?: string;
+  quests?: string[];
+  services?: string[];
+  image?: string;
+}
+
+export interface Settlement {
+  slug: string;
+  name: string;
+  description?: string;
+  npcs?: string[];
+  merchants?: string[];
+  services?: string[];
+  quests?: string[];
+  resources?: string[];
+  locations?: string[];
   image?: string;
 }
 

@@ -7,7 +7,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { locationHref, materials, recipeHref, upgradeHref } from "@/lib/data";
 
 export const metadata: Metadata = buildMetadata({
-  title: "DREADMOOR Resources – Scrap Metal & Material Locations",
+  title: "DREADMOOR Resources – Material Locations",
   description:
     "DREADMOOR resources database: scrap metal and every crafting material with gathering locations across the Submerged Lands and what they are used in.",
   path: "/world/resources/",
@@ -28,9 +28,11 @@ export default function ResourcesPage() {
       <DbExplorer
         rows={materials.map((m) => ({
           id: m.slug,
+          image: m.image,
           icon: "material",
           cells: {
             name: m.name,
+            type: m.type ?? "—",
             locations: m.locations?.length
               ? { parts: m.locations.map((name) => ({ text: name, href: locationHref(name) ?? undefined })) }
               : "—",
@@ -38,14 +40,21 @@ export default function ResourcesPage() {
               ? { parts: m.usedIn.map((name) => ({ text: name, href: (recipeHref(name) ?? upgradeHref(name)) ?? undefined })) }
               : "—",
           },
-          filters: { locations: m.locations ?? [] },
+          filters: {
+            locations: m.locations ?? [],
+            type: m.type ? [m.type] : [],
+          },
         }))}
         columns={[
           { key: "name", label: "Material", sortable: true },
+          { key: "type", label: "Type", sortable: true },
           { key: "locations", label: "Locations" },
           { key: "usedIn", label: "Used In" },
         ]}
-        filters={[{ key: "locations", label: "Location" }]}
+        filters={[
+          { key: "locations", label: "Location" },
+          { key: "type", label: "Type" },
+        ]}
         searchPlaceholder="Search materials…"
       />
     </div>
